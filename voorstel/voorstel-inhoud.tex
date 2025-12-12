@@ -5,35 +5,35 @@
 \label{sec:inleiding}
 
 In de sportwereld, zoals bij voetbalclubs, is het primaire doel om vooruitgang te boeken. 
-Hiervoor wordt ook zo vaak mogelijk gebruik gemaakt van de recentste, beste technologieën zoals wearables, GPS-trackers, beeldanalyses, \dots. 
-Deze technologieën hebben het potentieel om invloed te hebben op allerlei beslissingen die moeten genomen worden, er blijkt echter dat coaches, ondanks het bezitten van deze waardevolle data, nog altijd vaak hun beslissingen laten drijven door andere factoren. 
+Hiervoor wordt zo veel mogelijk gebruik gemaakt van de recentste, beste technologieën zoals wearables, GPS-trackers en videoanalyse. 
+Deze technologieën hebben het potentieel om invloed te hebben op allerlei beslissingen die moeten worden genomen, er blijkt echter dat coaches, ondanks het bezitten van deze waardevolle data, nog steeds vaak hun beslissingen laten beïnvloeden door andere factoren. 
 Dit komt wellicht omdat de kloof tussen het ontvangen van de data en het benutten ervan nog te groot is.
 
 Deze bachelorproef focust zich op een specifieke casus binnen een voetbalcontext, waar men reeds veel data verzamelt. 
 De doelgroep van het onderzoek bestaat uit coaches en performance analisten binnen de voetbalwereld, die nut hebben aan duidelijke, snel interpreteerbare inzichten tijdens trainingssessies.
-In samenwerking met een club zal duidelijker worden over wat voor data het exact gaat en hoe deze zo interpreteerbaar kan gemaakt worden. 
+In samenwerking met een club zal duidelijker worden welke data exact wordt verzameld en hoe deze zo interpreteerbaar kan gemaakt worden. 
 Mogelijke data is de data die opgehaald wordt door de \emph{Catapult}-wearables, die gebruikt worden door vele Belgische clubs.
 \newline\newline
 De centrale onderzoeksvraag van deze bachelorproef luidt: Hoe kunnen we opgehaalde trainingsdata omzetten in een beter inzicht in trainingsprestaties?
 Het onderzoek heeft de doelstelling een oplossing te vinden die de kloof tussen het ophalen en toepassen van de trainingsdata te verkleinen. 
-Concreet is het doel een proof-of-concept te maken die aantoont data (beter) te visualiseren is om zo de eerder genoemde kloof te dichten.
+Concreet is het doel een proof-of-concept te ontwikkelen dat aantoont dat trainingsdata beter te visualiseren is om zo de eerder genoemde kloof te dichten.
 
 Enkele deelvragen met betrekking tot het probleemdomein zijn: Welke trainingsdata wordt reeds opgehaald? Hoe wordt deze trainingsdata opgehaald? Wat doen coaches met de opgehaalde trainingsdata? Hoe vaak beïnvloedt de trainingsdata keuzes?
 
-Enkele deelvragen met betrekking tot het oplossingsdomein zijn: Welke types data worden opgehaald? Hoeveel tijd kost het om de data te verzamelen? Hoeveel helpt het de coach om een visualisatie van de data te zien? Op welke manier wordt de data gevisualiseerd?
+Enkele deelvragen met betrekking tot het oplossingsdomein zijn: Welke types data worden opgehaald? Hoeveel tijd kost het om de data te verzamelen? In welke mate helpt visualisatie de coach om de data te interpreteren? Op welke manier wordt de data gevisualiseerd?
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Stand van zaken}%
 \label{sec:literatuurstudie}
 
-In de sportwereld heeft de digitalisering de afgelopen jaren gezorgd voor een toename in het gebruik van diverse technologieën, zoals wearables, GPS-trackers en data analyseplatformen, bij trainingen en wedstrijden. Hierdoor worden er in allerlei sportdisciplines grote hoeveelheden data verzameld om de performantie van atleten beter te begrijpen en te kunnen verbeteren. Hoewel deze technologieën nu al door veel ploegen en individuën gebruikt worden, tonen recente onderzoeken aan dat het deze opgehaalde data vaak slechts sporadisch wordt toegepast en dat coaches moeite ervaren om de gegevens om te zetten naar praktische bruikbare inzichten.
+In de sportwereld heeft de digitalisering de afgelopen jaren gezorgd voor een toename in het gebruik van diverse technologieën, zoals wearables, GPS-trackers en data-analyseplatformen, bij trainingen en wedstrijden. Hierdoor worden er in allerlei sportdisciplines grote hoeveelheden data verzameld om de performantie van atleten beter te begrijpen en te kunnen verbeteren. Hoewel deze technologieën nu al door veel ploegen en individuën gebruikt worden, tonen recente onderzoeken aan dat deze opgehaalde data vaak slechts sporadisch wordt toegepast en dat coaches moeite ervaren om de gegevens om te zetten naar praktische bruikbare inzichten.
 
-Uit het onderzoek van \textcite{AnyadikeDanesEtAl2023} blijkt dat clubs en coaches wel toegang hebben tot deze data, maar dat andere factoren vaak een grotere rol spelen. Zo zijn niet-fysieke factoren zoals de mentaliteit van een speler spelen quasi altijd een reden om een beslissing te nemen en is de fysieke prestatie slechts volgens een vierde van de participanten de hoofdreden om een beslissing te nemen.
+Uit het onderzoek van \textcite{AnyadikeDanesEtAl2023} blijkt dat clubs en coaches wel toegang hebben tot deze data, maar dat andere factoren vaak een grotere rol spelen. Zo spelen niet-fysieke factoren, zoals de mentaliteit van een speler, quasi altijd een rol om een beslissing te nemen en is de fysieke prestatie slechts volgens een vierde van de participanten de hoofdreden om een beslissing te nemen.
 
-De relatie tussen een coach en zijn analisten is ook cruciaal bij het toepassen van de moderne technologieën volgens \textcite{CallinanEtAl2023}. Volgens deze studie is dit omdat coaches vaak onrechtstreeks, via analisten of \emph{generalisten}, in contact staan met de opgehaalde data. Dit zorgt dus ook voor een extra moeilijkheid bij een coach omtrent het inzichten halen uit de opgehaalde data. Dit onderzoek was specifiek naar rugby-ploegen, maar aangezie de meeste professionele sportverenigingen tegenwoordig beschikken over analisten is er reden om te geloven dat de conclusie uit dit onderzoek ook toepasselijk is op een bredere schaal.
+De relatie tussen een coach en zijn analisten is ook cruciaal bij het toepassen van de moderne technologieën volgens \textcite{CallinanEtAl2023}. Volgens deze studie is dit omdat coaches vaak onrechtstreeks, via analisten of \emph{generalisten}, in contact staan met de opgehaalde data. Dit zorgt dus ook voor een extra moeilijkheid bij een coach omtrent het inzichten halen uit de opgehaalde data. Dit onderzoek was specifiek naar rugby-ploegen, maar aangezien de meeste professionele sportverenigingen tegenwoordig beschikken over analisten, is er reden om te geloven dat de conclusie uit dit onderzoek ook toepasselijk is op een bredere schaal.
 
-De onderzoeken van zowel \textcite{HoutmeyersEtAl2021}, \textcite{ObiEtAl2024} en \textcite{DavisEtAl2024} tonen allen de impact die data analyse op sport heeft en kan hebben. Dit toont dus wel dat het absoluut waardevol kan zijn om de kloof te dichten.
+De onderzoeken van zowel \textcite{HoutmeyersEtAl2021}, \textcite{ObiEtAl2024} en \textcite{DavisEtAl2024} tonen allen de impact die data analyse op sport heeft en kan hebben. Dit benadrukt dat het absoluut waardevol kan zijn om de kloof te dichten.
 
 
 
@@ -49,14 +49,14 @@ De onderzoeken van zowel \textcite{HoutmeyersEtAl2021}, \textcite{ObiEtAl2024} e
 \section{Methodologie}%
 \label{sec:methodologie}
 
-De eerste fase van het onderzoek zal zijn om, in de eerste weken, door middel van een literatuurstudie en interviews bij clubs te onderzoeken hoe alles momenteel in werking gaat, welke data wordt opgehaald, wat wordt hiermee gedaan\dots.
+De eerste fase van het onderzoek zal zijn om in de eerste weken door middel van een literatuurstudie en interviews bij clubs te onderzoeken hoe de huidige dataverzameling en -interpretatie verloopt, welke data wordt opgehaald, wat wordt hiermee gedaan\dots.
 Hierna volgt een korte periode waarbij er gezocht wordt naar een haalbare manier om de huidige methode te verbeteren.
-Wanneer deze methode uitgedacht is begint de effectieve ontwikkeling van het proof-of-concept. Hier wordt dan een basische versie ontwikkelt van een programma of dashboard of andere uitgedachte methode die helpt om de gevisualiseerde data leesbaar over te brengen aan de coach van de club. Hierbij zullen ook de behoeftes van coaches opgenomen wordt om het protoype zo goed mogelijk te maken.
+Wanneer deze methode uitgedacht is, begint de effectieve ontwikkeling van het proof-of-concept. Hier wordt dan een basische versie ontwikkeld van een programma of dashboard of andere uitgedachte methode die helpt om de gevisualiseerde data leesbaar over te brengen aan de coach van de club. Hierbij zullen ook de behoeftes van coaches worden opgenomen om het protoype zo goed mogelijk te maken.
 Nadat het proof-of-concept gemaakt is volgt nogmaals een gesprek met de belanghebbenden binnen de club, om af te stemmen of het product voldoet aan hun verwachtingen.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Ik verwacht dat het duidelijk en leesbaar visualiseren van de trainingsdata coaches in staat stelt om beter beslissingen te nemen op vlak van deze data, in vergelijking met onrechtstreeks contact met de data of onduidelijke representeringen hiervan. De niet-fysieke factoren zullen ook nog een rol blijven spelen maar met dit onderzoek wil ik zorgen dat het maken van de beslissingen op basis van de fysieke factoren nog beter en makkelijker wordt.
-Het onderzoek zal aantonen dat het probleem niet de beschikbaarheid van data is, maar de manier waarop de coach deze data krijgt te zien. Daarom moet de proof-of-concept aantonen dat een goede visualisatie van de data leidt tot het verkleinen van de kloof tussen dataverzameling en datatoepassing in de sportwereld.
+Ik verwacht dat het duidelijk en leesbaar visualiseren van de trainingsdata coaches in staat stelt om beter beslissingen te nemen op vlak van deze data, in vergelijking met onrechtstreeks contact met de data, of bij onduidelijke representaties hiervan. De niet-fysieke factoren zullen ook nog een rol blijven spelen maar met dit onderzoek wil ik aantonen dat het maken van de beslissingen op basis van de fysieke factoren nog beter en makkelijker wordt.
+Het onderzoek zal aantonen dat het probleem niet de beschikbaarheid van data is, maar de manier waarop de coach deze data krijgt te zien. Daarom moet de proof-of-concept aantonen dat een goede visualisatie van de data leidt tot het verkleinen van de kloof tussen dataverzameling en -toepassing in de sportwereld.
