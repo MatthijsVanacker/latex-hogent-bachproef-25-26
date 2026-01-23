@@ -1,0 +1,691 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{AnyadikeDanesEtAl2023}{online}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c8c334d4032de90e89e5b7902f539589}{%
+           family={Anyadike-Danes},
+           familyi={A\bibinithyphendelim D\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=74f6c8664e42155bc19962dba0096aa9}{%
+           family={Donath},
+           familyi={D\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ee2d50cdaacaf7fbf86991b15379e00f}{%
+           family={Kiely},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a4b643ba931828946ca2c90dc66ce558}
+      \strng{fullhash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{fullhashraw}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{bibnamehash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{authorbibnamehash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{authornamehash}{a4b643ba931828946ca2c90dc66ce558}
+      \strng{authorfullhash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{authorfullhashraw}{edc8ab0ff45ed57af8f374d90761adee}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{9}
+      \field{title}{Coaches' perceptions of factors driving training adaptation: An international survey}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s40279-023-01894-1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s40279-023-01894-1
+      \endverb
+    \endentry
+    \entry{CallinanEtAl2023}{online}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=675719094dd0daec0e1888754ce1a1fd}{%
+           family={Callinan},
+           familyi={C\bibinitperiod},
+           given={M.\bibnamedelimi J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6dfc9cdec4024bc97bb78fc3435aa138}{%
+           family={Connor},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a5d7823af49200f72ac7a2d302aa83d7}{%
+           family={Sinclair},
+           familyi={S\bibinitperiod},
+           given={W.\bibnamedelimi H.},
+           giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8490c0e440fa151a3e356c7e9e0c5a94}{%
+           family={Leicht},
+           familyi={L\bibinitperiod},
+           given={A.\bibnamedelimi S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d58142526b4df8035460def05d6c6e16}
+      \strng{fullhash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{fullhashraw}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{bibnamehash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{authorbibnamehash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{authornamehash}{d58142526b4df8035460def05d6c6e16}
+      \strng{authorfullhash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{authorfullhashraw}{ddddd31a73053f5222f6a2c5a872e314}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{1}
+      \field{title}{Exploring rugby coaches' perception and implementation of performance analytics}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0280799
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1371/journal.pone.0280799
+      \endverb
+    \endentry
+    \entry{DavisEtAl2024}{online}{}{}
+      \name{author}{8}{}{%
+        {{un=0,uniquepart=base,hash=99a74e7d8216e010b1095c973bea3bae}{%
+           family={Davis},
+           familyi={D\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=231c028e6ca264f4d7a35b14d284b62b}{%
+           family={Bransen},
+           familyi={B\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa0752c6170fdd329bf8bffaee0588b1}{%
+           family={Devos},
+           familyi={D\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0637ce82f3491a2099647fd5c564820a}{%
+           family={Jaspers},
+           familyi={J\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5905401e159a166c6d0aad079948912c}{%
+           family={Meert},
+           familyi={M\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5d4951eb03da7c39f0399140eb1866cc}{%
+           family={Robberechts},
+           familyi={R\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b35e577717df22a0a600376e3d4c9dc7}{%
+           family={Van\bibnamedelima Haaren},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7c31536247c6097dfcf784060cd20fed}{%
+           family={Van\bibnamedelima Roy},
+           familyi={V\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ef4f0e6eb1b1fcd8644708cd40d657e1}
+      \strng{fullhash}{a81e623e5cf67d987758392614fe130f}
+      \strng{fullhashraw}{a81e623e5cf67d987758392614fe130f}
+      \strng{bibnamehash}{a81e623e5cf67d987758392614fe130f}
+      \strng{authorbibnamehash}{a81e623e5cf67d987758392614fe130f}
+      \strng{authornamehash}{ef4f0e6eb1b1fcd8644708cd40d657e1}
+      \strng{authorfullhash}{a81e623e5cf67d987758392614fe130f}
+      \strng{authorfullhashraw}{a81e623e5cf67d987758392614fe130f}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{7}
+      \field{title}{Methodology and evaluation in sports analytics: challenges, approaches, and lessons learned}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10994-024-06585-0
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10994-024-06585-0
+      \endverb
+    \endentry
+    \entry{HoutmeyersEtAl2021}{online}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=0f7adcf90463b3c35e1339f0257356b2}{%
+           family={Houtmeyers},
+           familyi={H\bibinitperiod},
+           given={K.\bibnamedelimi C.},
+           giveni={K\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e268cfe98d601d0f41e6b01f95ad9c98}{%
+           family={Vanrenterghem},
+           familyi={V\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0637ce82f3491a2099647fd5c564820a}{%
+           family={Jaspers},
+           familyi={J\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=87d644008138bbab7ca37a90f317e41f}{%
+           family={Ruf},
+           familyi={R\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a6de363b72b5903eb21f39340b7f61d0}{%
+           family={Brink},
+           familyi={B\bibinitperiod},
+           given={M.\bibnamedelimi S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8c0d450f6113e8b55d747310ddd0e047}{%
+           family={Helsen},
+           familyi={H\bibinitperiod},
+           given={W.\bibnamedelimi F.},
+           giveni={W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1418f40b1674e46606ec72c9cd29086f}
+      \strng{fullhash}{520ecb97388decb2da2908f8bc034694}
+      \strng{fullhashraw}{520ecb97388decb2da2908f8bc034694}
+      \strng{bibnamehash}{520ecb97388decb2da2908f8bc034694}
+      \strng{authorbibnamehash}{520ecb97388decb2da2908f8bc034694}
+      \strng{authornamehash}{1418f40b1674e46606ec72c9cd29086f}
+      \strng{authorfullhash}{520ecb97388decb2da2908f8bc034694}
+      \strng{authorfullhashraw}{520ecb97388decb2da2908f8bc034694}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{5}
+      \field{title}{Load monitoring practice in European elite football and the impact of club culture and financial resources}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.3389/fspor.2021.679824
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3389/fspor.2021.679824
+      \endverb
+    \endentry
+    \entry{ObiEtAl2024}{online}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=3044faf436d4e5e6703a8919cf92a7ce}{%
+           family={Obi},
+           familyi={O\bibinitperiod},
+           given={N.\bibnamedelimi O.\bibnamedelimi C.},
+           giveni={N\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=587efecac0a6cc895bf1232b98213208}{%
+           family={Dawodu},
+           familyi={D\bibinitperiod},
+           given={N.\bibnamedelimi S.\bibnamedelimi O.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e7f3b8b7461757381de776ce6675a26d}{%
+           family={Onwusinkwue},
+           familyi={O\bibinitperiod},
+           given={N.\bibnamedelimi S.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f7e7c093deaf21094013936be44d6e9}{%
+           family={Osasona},
+           familyi={O\bibinitperiod},
+           given={N.\bibnamedelimi F.},
+           giveni={N\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7ecabc982ea2b39b90f1b1e9e7c400d4}{%
+           family={Atadoga},
+           familyi={A\bibinitperiod},
+           given={N.\bibnamedelimi A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b18b767cfe29754354f6d7959d6ef3b6}{%
+           family={Daraojimba},
+           familyi={D\bibinitperiod},
+           given={N.\bibnamedelimi A.\bibnamedelimi I.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d0a43e2d95cbbc5e5f706c6e85834269}
+      \strng{fullhash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{fullhashraw}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{bibnamehash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{authorbibnamehash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{authornamehash}{d0a43e2d95cbbc5e5f706c6e85834269}
+      \strng{authorfullhash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{authorfullhashraw}{6065bc5133045eff22fdfc2bf77244c9}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{1}
+      \field{title}{Data science in sports analytics: A review of performance optimization and fan engagement}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.30574/wjarr.2024.21.1.0370
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.30574/wjarr.2024.21.1.0370
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{AnyadikeDanesEtAl2023}{online}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c8c334d4032de90e89e5b7902f539589}{%
+           family={Anyadike-Danes},
+           familyi={A\bibinithyphendelim D\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=74f6c8664e42155bc19962dba0096aa9}{%
+           family={Donath},
+           familyi={D\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ee2d50cdaacaf7fbf86991b15379e00f}{%
+           family={Kiely},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a4b643ba931828946ca2c90dc66ce558}
+      \strng{fullhash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{fullhashraw}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{bibnamehash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{authorbibnamehash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{authornamehash}{a4b643ba931828946ca2c90dc66ce558}
+      \strng{authorfullhash}{edc8ab0ff45ed57af8f374d90761adee}
+      \strng{authorfullhashraw}{edc8ab0ff45ed57af8f374d90761adee}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{8}
+      \field{month}{9}
+      \field{title}{Coaches' perceptions of factors driving training adaptation: An international survey}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s40279-023-01894-1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s40279-023-01894-1
+      \endverb
+    \endentry
+    \entry{CallinanEtAl2023}{online}{}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=675719094dd0daec0e1888754ce1a1fd}{%
+           family={Callinan},
+           familyi={C\bibinitperiod},
+           given={M.\bibnamedelimi J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6dfc9cdec4024bc97bb78fc3435aa138}{%
+           family={Connor},
+           familyi={C\bibinitperiod},
+           given={J.\bibnamedelimi D.},
+           giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a5d7823af49200f72ac7a2d302aa83d7}{%
+           family={Sinclair},
+           familyi={S\bibinitperiod},
+           given={W.\bibnamedelimi H.},
+           giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8490c0e440fa151a3e356c7e9e0c5a94}{%
+           family={Leicht},
+           familyi={L\bibinitperiod},
+           given={A.\bibnamedelimi S.},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d58142526b4df8035460def05d6c6e16}
+      \strng{fullhash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{fullhashraw}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{bibnamehash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{authorbibnamehash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{authornamehash}{d58142526b4df8035460def05d6c6e16}
+      \strng{authorfullhash}{ddddd31a73053f5222f6a2c5a872e314}
+      \strng{authorfullhashraw}{ddddd31a73053f5222f6a2c5a872e314}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{24}
+      \field{month}{1}
+      \field{title}{Exploring rugby coaches' perception and implementation of performance analytics}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0280799
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1371/journal.pone.0280799
+      \endverb
+    \endentry
+    \entry{DavisEtAl2024}{online}{}{}
+      \name{author}{8}{}{%
+        {{un=0,uniquepart=base,hash=99a74e7d8216e010b1095c973bea3bae}{%
+           family={Davis},
+           familyi={D\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=231c028e6ca264f4d7a35b14d284b62b}{%
+           family={Bransen},
+           familyi={B\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa0752c6170fdd329bf8bffaee0588b1}{%
+           family={Devos},
+           familyi={D\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0637ce82f3491a2099647fd5c564820a}{%
+           family={Jaspers},
+           familyi={J\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5905401e159a166c6d0aad079948912c}{%
+           family={Meert},
+           familyi={M\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5d4951eb03da7c39f0399140eb1866cc}{%
+           family={Robberechts},
+           familyi={R\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b35e577717df22a0a600376e3d4c9dc7}{%
+           family={Van\bibnamedelima Haaren},
+           familyi={V\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7c31536247c6097dfcf784060cd20fed}{%
+           family={Van\bibnamedelima Roy},
+           familyi={V\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ef4f0e6eb1b1fcd8644708cd40d657e1}
+      \strng{fullhash}{a81e623e5cf67d987758392614fe130f}
+      \strng{fullhashraw}{a81e623e5cf67d987758392614fe130f}
+      \strng{bibnamehash}{a81e623e5cf67d987758392614fe130f}
+      \strng{authorbibnamehash}{a81e623e5cf67d987758392614fe130f}
+      \strng{authornamehash}{ef4f0e6eb1b1fcd8644708cd40d657e1}
+      \strng{authorfullhash}{a81e623e5cf67d987758392614fe130f}
+      \strng{authorfullhashraw}{a81e623e5cf67d987758392614fe130f}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{17}
+      \field{month}{7}
+      \field{title}{Methodology and evaluation in sports analytics: challenges, approaches, and lessons learned}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10994-024-06585-0
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10994-024-06585-0
+      \endverb
+    \endentry
+    \entry{HoutmeyersEtAl2021}{online}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=0f7adcf90463b3c35e1339f0257356b2}{%
+           family={Houtmeyers},
+           familyi={H\bibinitperiod},
+           given={K.\bibnamedelimi C.},
+           giveni={K\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e268cfe98d601d0f41e6b01f95ad9c98}{%
+           family={Vanrenterghem},
+           familyi={V\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0637ce82f3491a2099647fd5c564820a}{%
+           family={Jaspers},
+           familyi={J\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=87d644008138bbab7ca37a90f317e41f}{%
+           family={Ruf},
+           familyi={R\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a6de363b72b5903eb21f39340b7f61d0}{%
+           family={Brink},
+           familyi={B\bibinitperiod},
+           given={M.\bibnamedelimi S.},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8c0d450f6113e8b55d747310ddd0e047}{%
+           family={Helsen},
+           familyi={H\bibinitperiod},
+           given={W.\bibnamedelimi F.},
+           giveni={W\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1418f40b1674e46606ec72c9cd29086f}
+      \strng{fullhash}{520ecb97388decb2da2908f8bc034694}
+      \strng{fullhashraw}{520ecb97388decb2da2908f8bc034694}
+      \strng{bibnamehash}{520ecb97388decb2da2908f8bc034694}
+      \strng{authorbibnamehash}{520ecb97388decb2da2908f8bc034694}
+      \strng{authornamehash}{1418f40b1674e46606ec72c9cd29086f}
+      \strng{authorfullhash}{520ecb97388decb2da2908f8bc034694}
+      \strng{authorfullhashraw}{520ecb97388decb2da2908f8bc034694}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{20}
+      \field{month}{5}
+      \field{title}{Load monitoring practice in European elite football and the impact of club culture and financial resources}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.3389/fspor.2021.679824
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3389/fspor.2021.679824
+      \endverb
+    \endentry
+    \entry{ObiEtAl2024}{online}{}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=3044faf436d4e5e6703a8919cf92a7ce}{%
+           family={Obi},
+           familyi={O\bibinitperiod},
+           given={N.\bibnamedelimi O.\bibnamedelimi C.},
+           giveni={N\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=587efecac0a6cc895bf1232b98213208}{%
+           family={Dawodu},
+           familyi={D\bibinitperiod},
+           given={N.\bibnamedelimi S.\bibnamedelimi O.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e7f3b8b7461757381de776ce6675a26d}{%
+           family={Onwusinkwue},
+           familyi={O\bibinitperiod},
+           given={N.\bibnamedelimi S.},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f7e7c093deaf21094013936be44d6e9}{%
+           family={Osasona},
+           familyi={O\bibinitperiod},
+           given={N.\bibnamedelimi F.},
+           giveni={N\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7ecabc982ea2b39b90f1b1e9e7c400d4}{%
+           family={Atadoga},
+           familyi={A\bibinitperiod},
+           given={N.\bibnamedelimi A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b18b767cfe29754354f6d7959d6ef3b6}{%
+           family={Daraojimba},
+           familyi={D\bibinitperiod},
+           given={N.\bibnamedelimi A.\bibnamedelimi I.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{d0a43e2d95cbbc5e5f706c6e85834269}
+      \strng{fullhash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{fullhashraw}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{bibnamehash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{authorbibnamehash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{authornamehash}{d0a43e2d95cbbc5e5f706c6e85834269}
+      \strng{authorfullhash}{6065bc5133045eff22fdfc2bf77244c9}
+      \strng{authorfullhashraw}{6065bc5133045eff22fdfc2bf77244c9}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{27}
+      \field{month}{1}
+      \field{title}{Data science in sports analytics: A review of performance optimization and fan engagement}
+      \field{urlday}{12}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://doi.org/10.30574/wjarr.2024.21.1.0370
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.30574/wjarr.2024.21.1.0370
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -4,37 +4,52 @@
 \section{Inleiding}%
 \label{sec:inleiding}
 
-In de sportwereld, zoals bij voetbalclubs, is het primaire doel om vooruitgang te boeken. 
-Hiervoor wordt zo veel mogelijk gebruik gemaakt van de recentste, beste technologieën zoals wearables, GPS-trackers en videoanalyse. 
-Deze technologieën hebben het potentieel om invloed te hebben op allerlei beslissingen die moeten worden genomen, er blijkt echter dat coaches, ondanks het bezitten van deze waardevolle data, nog steeds vaak hun beslissingen laten beïnvloeden door andere factoren. 
-Dit komt wellicht omdat de kloof tussen het ontvangen van de data en het benutten ervan nog te groot is.
+Professionele voetbalclubs streven voortdurend naar sportieve en competitieve vooruitgang. 
+In dit streven wordt steeds vaker gebruikgemaakt van data en technologie om spelersprestaties te monitoren, te evalueren en te optimaliseren. 
+Door het gebruik van GPS-systemen, wearables en geavanceerde wedstrijdstatistieken beschikken clubs vandaag over een grote hoeveelheid objectieve fysieke prestatiegegevens.
 
-Deze bachelorproef focust zich op een specifieke casus binnen een voetbalcontext, waar men reeds veel data verzamelt. 
-De doelgroep van het onderzoek bestaat uit coaches en performance analisten binnen de voetbalwereld, die nut hebben aan duidelijke, snel interpreteerbare inzichten tijdens trainingssessies.
-In samenwerking met een club zal duidelijker worden welke data exact wordt verzameld en hoe deze zo interpreteerbaar kan gemaakt worden. 
-Mogelijke data is de data die opgehaald wordt door de \emph{Catapult}-wearables, die gebruikt worden door vele Belgische clubs.
+Deze bachelorproef focust zich op het analyseren van fysieke spelersattributen binnen een wedstrijdcontext en onderzoekt hoe machine learning kan bijdragen aan het identificeren van fysiek relevante spelersprofielen. 
+Door fysieke prestatiedata te koppelen aan wedstrijdresultaten wordt nagegaan welke fysieke kenmerken statistisch samenhangen met sportief succes. 
+De doelgroep van dit onderzoek bestaat uit performance analisten en scouts binnen het professionele voetbal die nood hebben aan objectieve, interpreteerbare en data-gedreven ondersteuning bij scoutingbeslissingen.
 \newline\newline
-De centrale onderzoeksvraag van deze bachelorproef luidt: Hoe kunnen we opgehaalde trainingsdata omzetten in een beter inzicht in trainingsprestaties?
-Het onderzoek heeft de doelstelling een oplossing te vinden die de kloof tussen het ophalen en toepassen van de trainingsdata te verkleinen. 
-Concreet is het doel een proof-of-concept te ontwikkelen dat aantoont dat trainingsdata beter te visualiseren is om zo de eerder genoemde kloof te dichten.
+De centrale onderzoeksvraag van deze bachelorproef luidt: \textbf{In welke mate kunnen fysieke spelersstatistieken, geanalyseerd met explainable machine learning technieken, bijdragen aan het identificeren van relevante spelersprofielen voor voetbal scouting?}
+\newline
+Het doel van dit onderzoek is het ontwikkelen van een proof-of-concept dat aantoont hoe machine learning en explainable AI kunnen worden ingezet om fysieke prestatiedata te vertalen naar bruikbare inzichten voor scouting.
 
-Enkele deelvragen met betrekking tot het probleemdomein zijn: Welke trainingsdata wordt reeds opgehaald? Hoe wordt deze trainingsdata opgehaald? Wat doen coaches met de opgehaalde trainingsdata? Hoe vaak beïnvloedt de trainingsdata keuzes?
+Enkele deelvragen met betrekking tot het probleemdomein zijn: 
+\begin{itemize}
+    \item Welke fysieke spelersattributen worden binnen professioneel voetbal relevant geacht voor prestaties en scouting?
+    \item In welke mate vertonen fysieke spelersstatistieken een verband met wedstrijdresultaten?
+    \item Welke contextuele factoren (positie, thuis/uit, competitieniveau) beïnvloeden de relevantie van fysieke attributen?
+\end{itemize}
 
-Enkele deelvragen met betrekking tot het oplossingsdomein zijn: Welke types data worden opgehaald? Hoeveel tijd kost het om de data te verzamelen? In welke mate helpt visualisatie de coach om de data te interpreteren? Op welke manier wordt de data gevisualiseerd?
+Enkele deelvragen met betrekking tot het oplossingsdomein zijn: 
+\begin{itemize}
+    \item Welke machine learning modellen zijn geschikt voor het voorspellen van wedstrijdresultaten op basis van fysieke data?
+    \item Hoe kunnen explainable machine learning technieken worden toegepast om de bijdrage van fysieke attributen te interpreteren?
+    \item Hoe kunnen deze inzichten vertaald worden naar praktische toepassingen binnen voetbal scouting?
+\end{itemize}
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{Stand van zaken}%
 \label{sec:literatuurstudie}
 
-In de sportwereld heeft de digitalisering de afgelopen jaren gezorgd voor een toename in het gebruik van diverse technologieën, zoals wearables, GPS-trackers en data-analyseplatformen, bij trainingen en wedstrijden. Hierdoor worden er in allerlei sportdisciplines grote hoeveelheden data verzameld om de performantie van atleten beter te begrijpen en te kunnen verbeteren. Hoewel deze technologieën nu al door veel ploegen en individuën gebruikt worden, tonen recente onderzoeken aan dat deze opgehaalde data vaak slechts sporadisch wordt toegepast en dat coaches moeite ervaren om de gegevens om te zetten naar praktische bruikbare inzichten.
+De toepassing van data-analyse en machine learning binnen de sportwereld is de afgelopen jaren sterk toegenomen. In het bijzonder binnen professioneel voetbal worden steeds grotere hoeveelheden data verzameld, gaande van wedstrijd- en eventdata tot gedetailleerde fysieke prestatiedata afkomstig van GPS-systemen en wearables. Deze evolutie heeft geleid tot een groeiend onderzoeksdomein waarin machine learning technieken worden ingezet om sportprestaties te analyseren en te voorspellen.
 
-Uit het onderzoek van \textcite{AnyadikeDanesEtAl2023} blijkt dat clubs en coaches wel toegang hebben tot deze data, maar dat andere factoren vaak een grotere rol spelen. Zo spelen niet-fysieke factoren, zoals de mentaliteit van een speler, quasi altijd een rol om een beslissing te nemen en is de fysieke prestatie slechts volgens een vierde van de participanten de hoofdreden om een beslissing te nemen.
+Een recente systematische review van \textcite{Pietraszewski2025_AI_SportsAnalytics} toont aan dat artificial intelligence en machine learning een steeds prominentere rol spelen binnen sport analytics. Volgens de auteurs worden deze technieken voornamelijk ingezet voor prestatie-evaluatie, wedstrijdvoorspelling en blessurepreventie. Hoewel het merendeel van de studies focust op technische en tactische indicatoren, benadrukt de review dat ook fysieke prestatiedata steeds vaker wordt opgenomen in voorspellende modellen. Dit onderstreept het potentieel van machine learning voor het analyseren van fysieke spelersattributen.
 
-De relatie tussen een coach en zijn analisten is ook cruciaal bij het toepassen van de moderne technologieën volgens \textcite{CallinanEtAl2023}. Volgens deze studie is dit omdat coaches vaak onrechtstreeks, via analisten of \emph{generalisten}, in contact staan met de opgehaalde data. Dit zorgt dus ook voor een extra moeilijkheid bij een coach omtrent het inzichten halen uit de opgehaalde data. Dit onderzoek was specifiek naar rugby-ploegen, maar aangezien de meeste professionele sportverenigingen tegenwoordig beschikken over analisten, is er reden om te geloven dat de conclusie uit dit onderzoek ook toepasselijk is op een bredere schaal.
+Binnen voetbalcontext wordt machine learning voornamelijk toegepast op wedstrijd- en eventdata. \textcite{Pappalardo2018_PlayeRank} introduceren met het PlayeRank-framework een data-gedreven methode om spelersprestaties te evalueren en te rangschikken. Hoewel dit framework voornamelijk technische en tactische statistieken gebruikt, illustreert het onderzoek hoe machine learning kan worden ingezet om multidimensionale spelersdata te vertalen naar objectieve evaluaties. Deze aanpak vormt een belangrijke inspiratie voor het toepassen van data-gedreven methoden binnen scoutingprocessen.
 
-De onderzoeken van zowel \textcite{HoutmeyersEtAl2021}, \textcite{ObiEtAl2024} en \textcite{DavisEtAl2024} tonen allen de impact die data analyse op sport heeft en kan hebben. Dit benadrukt dat het absoluut waardevol kan zijn om de kloof te dichten.
+Naast technische statistieken is er toenemende aandacht voor het gebruik van fysieke prestatiedata binnen machine learning modellen. \textcite{Mandorino2023_PlayerReadiness} tonen aan dat fysieke parameters zoals acceleraties, afstanden en intensieve acties succesvol kunnen worden geïntegreerd in machine learning modellen om de fysieke paraatheid van voetballers te kwantificeren. Dit bevestigt dat fysieke spelersstatistieken niet enkel relevant zijn voor load monitoring, maar ook waardevolle input vormen voor analytische modellen.
 
+Machine learning wordt ook frequent ingezet voor het voorspellen van wedstrijdresultaten. In een studie binnen het \textit{Journal of Big Data} tonen \textcite{BigData2024_SoccerOutcomePrediction} aan dat zowel klassieke machine learning modellen als meer geavanceerde technieken in staat zijn om voetbalwedstrijden te classificeren op basis van wedstrijdgerelateerde features. Hoewel fysieke statistieken in deze studie niet centraal staan, bevestigt het onderzoek dat match outcome prediction een geschikt kader vormt om de impact van specifieke featuregroepen, zoals fysieke teamkenmerken, te analyseren.
+
+Een belangrijk aandachtspunt binnen sport analytics is de interpreteerbaarheid van machine learning modellen. In professionele omgevingen, zoals voetbal scouting, is het essentieel dat beslissingen niet enkel gebaseerd zijn op voorspellende prestaties, maar ook begrijpelijk en verantwoordbaar zijn. \textcite{CalderonDiaz2023_ExplainableML_Soccer} tonen aan dat explainable machine learning technieken, zoals feature importance en SHAP-waarden, inzicht kunnen bieden in de bijdrage van individuele fysieke kenmerken aan modelvoorspellingen. Hoewel hun onderzoek gericht is op blessurepredictie, is de gebruikte methodologie rechtstreeks toepasbaar op prestatie- en scoutinganalyses.
+
+Tot slot benadrukken methodologische studies het belang van correcte dataverwerking en feature engineering binnen sport analytics. \textcite{Springer2024_MethodologyChallenges} bespreken verschillende uitdagingen met betrekking tot datakwaliteit, aggregatie en evaluatie van machine learning modellen in sportcontexten. Deze uitdagingen zijn bijzonder relevant wanneer fysieke spelersdata wordt geaggregeerd naar teamniveau, zoals vereist is binnen wedstrijdanalyse en scoutinggerichte toepassingen.
+
+Samenvattend toont de literatuur aan dat machine learning een waardevol instrument is binnen sport analytics, maar dat de toepassing van fysieke prestatiedata binnen scouting nog beperkt onderzocht is. Daarnaast blijkt interpreteerbaarheid een cruciale factor voor praktische toepasbaarheid. Deze bachelorproef sluit aan bij deze vaststellingen door fysieke spelersattributen centraal te stellen en explainable machine learning technieken toe te passen binnen een scoutingcontext.
 
 
 % Voor literatuurverwijzingen zijn er twee belangrijke commando's:
@@ -49,14 +64,20 @@ De onderzoeken van zowel \textcite{HoutmeyersEtAl2021}, \textcite{ObiEtAl2024} e
 \section{Methodologie}%
 \label{sec:methodologie}
 
-De eerste fase van het onderzoek zal zijn om in de eerste weken door middel van een literatuurstudie en interviews bij clubs te onderzoeken hoe de huidige dataverzameling en -interpretatie verloopt, welke data wordt opgehaald, wat wordt hiermee gedaan\dots.
-Hierna volgt een korte periode waarbij er gezocht wordt naar een haalbare manier om de huidige methode te verbeteren.
-Wanneer deze methode uitgedacht is, begint de effectieve ontwikkeling van het proof-of-concept. Hier wordt dan een basische versie ontwikkeld van een programma of dashboard of andere uitgedachte methode die helpt om de gevisualiseerde data leesbaar over te brengen aan de coach van de club. Hierbij zullen ook de behoeftes van coaches worden opgenomen om het protoype zo goed mogelijk te maken.
-Nadat het proof-of-concept gemaakt is volgt nogmaals een gesprek met de belanghebbenden binnen de club, om af te stemmen of het product voldoet aan hun verwachtingen.
+Het onderzoek wordt uitgevoerd volgens een gestructureerde data science aanpak en bestaat uit meerdere fasen.
+
+In een eerste fase wordt via literatuurstudie onderzocht welke fysieke spelersattributen relevant zijn binnen professioneel voetbal en hoe machine learning reeds wordt toegepast binnen sport analytics. Op basis hiervan wordt een selectie gemaakt van fysieke prestatie-indicatoren.
+
+In de tweede fase wordt een dataset samengesteld bestaande uit wedstrijdgegevens, fysieke spelersstatistieken en wedstrijdresultaten over meerdere seizoenen. Individuele spelersstatistieken worden via feature engineering geaggregeerd naar teamniveau, rekening houdend met positie en speelminuten.
+
+Vervolgens worden verschillende classificatiemodellen ontwikkeld om wedstrijdresultaten (winst, gelijkspel, verlies) te voorspellen op basis van deze fysieke teamfeatures. Hierbij wordt gestart met een interpreteerbaar basismodel, gevolgd door complexere machine learning modellen.
+
+In de laatste fase worden explainable machine learning technieken toegepast om de bijdrage van fysieke attributen aan de modelvoorspellingen te analyseren. De verkregen inzichten worden geïnterpreteerd in functie van voetbal scouting en vertaald naar concrete aanbevelingen.
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Ik verwacht dat het duidelijk en leesbaar visualiseren van de trainingsdata coaches in staat stelt om beter beslissingen te nemen op vlak van deze data, in vergelijking met onrechtstreeks contact met de data, of bij onduidelijke representaties hiervan. De niet-fysieke factoren zullen ook nog een rol blijven spelen maar met dit onderzoek wil ik aantonen dat het maken van de beslissingen op basis van de fysieke factoren nog beter en makkelijker wordt.
-Het onderzoek zal aantonen dat het probleem niet de beschikbaarheid van data is, maar de manier waarop de coach deze data krijgt te zien. Daarom moet de proof-of-concept aantonen dat een goede visualisatie van de data leidt tot het verkleinen van de kloof tussen dataverzameling en -toepassing in de sportwereld.
+Er wordt verwacht dat dit onderzoek aantoont dat bepaalde fysieke spelersattributen een significante bijdrage leveren aan wedstrijdresultaten en dat deze attributen op een objectieve manier kunnen worden geïdentificeerd met behulp van machine learning. Daarnaast wordt verwacht dat explainable AI technieken toelaten om deze resultaten op een transparante en interpreteerbare manier te communiceren.
+
+De bachelorproef zal aantonen dat fysieke prestatiedata niet enkel waardevol is voor trainingsopvolging, maar ook een relevante rol kan spelen binnen voetbal scouting. Het ontwikkelde proof-of-concept biedt een eerste stap richting data-gedreven scoutingbeslissingen waarbij objectieve fysieke profielen worden gecombineerd met menselijke expertise.
