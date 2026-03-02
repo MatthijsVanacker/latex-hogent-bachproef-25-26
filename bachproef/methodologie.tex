@@ -5,26 +5,69 @@
 \chapter{\IfLanguageName{dutch}{Methodologie}{Methodology}}%
 \label{ch:methodologie}
 
-%% TODO: In dit hoofstuk geef je een korte toelichting over hoe je te werk bent
-%% gegaan. Verdeel je onderzoek in grote fasen, en licht in elke fase toe wat
-%% de doelstelling was, welke deliverables daar uit gekomen zijn, en welke
-%% onderzoeksmethoden je daarbij toegepast hebt. Verantwoord waarom je
-%% op deze manier te werk gegaan bent.
-%% 
-%% Voorbeelden van zulke fasen zijn: literatuurstudie, opstellen van een
-%% requirements-analyse, opstellen long-list (bij vergelijkende studie),
-%% selectie van geschikte tools (bij vergelijkende studie, "short-list"),
-%% opzetten testopstelling/PoC, uitvoeren testen en verzamelen
-%% van resultaten, analyse van resultaten, ...
-%%
-%% !!!!! LET OP !!!!!
-%%
-%% Het is uitdrukkelijk NIET de bedoeling dat je het grootste deel van de corpus
-%% van je bachelorproef in dit hoofstuk verwerkt! Dit hoofdstuk is eerder een
-%% kort overzicht van je plan van aanpak.
-%%
-%% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
-%% en geef het een gepaste titel.
+\section{Onderzoeksopzet}
 
-\lipsum[21-25]
+Het doel van deze bachelorproef is het ontwikkelen van een interpreteerbare en reproduceerbare fysieke spelersscore ter ondersteuning van objectieve voetbalscouting. Om dit te realiseren wordt een data-gedreven methodologie gehanteerd waarbij machine learning-modellen worden ingezet om het relatieve belang van fysieke prestatie-indicatoren te bepalen.
 
+Er wordt gekozen voor een hybride aanpak waarbij supervised learning gecombineerd wordt met model-interpretatietechnieken. Daarnaast worden positie-specifieke modellen ontwikkeld om vertekening ten gevolge van verschillende fysieke rolvereisten per positie te vermijden.
+
+\section{Dataset en variabelen}
+
+De dataset bestaat uit wedstrijdgerelateerde fysieke prestatie-indicatoren per speler per wedstrijd. Alle variabelen worden genormaliseerd per 90 minuten om onderlinge vergelijkbaarheid te garanderen.
+
+Voorbeelden van gebruikte features zijn nog te bepalen.
+
+% \begin{itemize}
+%     \item Totale afgelegde afstand per 90 minuten
+%     \item High-intensity distance per 90 minuten
+%     \item Aantal sprints per 90 minuten
+%     \item Aantal acceleraties
+%     \item Aantal deceleraties
+%     \item Aantal high-speed runs
+% \end{itemize}
+
+Indien beschikbaar worden ook contextvariabelen zoals speelminuten meegenomen voor normalisatiecontrole.
+
+\section{Positie-specifieke modellering}
+
+Aangezien fysieke vereisten sterk verschillen per speelpositie, wordt de dataset opgesplitst per positie (bijvoorbeeld centrale verdedigers, flankverdedigers, centrale middenvelders en flankaanvallers). Voor elke positie wordt een afzonderlijk machine learning-model getraind.
+
+Deze aanpak zorgt ervoor dat spelers uitsluitend worden vergeleken met positiegenoten, wat structurele bias in de scoreberekening voorkomt.
+
+\section{Supervised learning}
+
+Voor elke positie wordt een classificatiemodel ontwikkeld met als doelvariabele een proxy voor fysieke waarde binnen de ploeg. Als proxy wordt gekozen voor aantal speelminuten in volgende wedstrijd.
+
+Er wordt gebruikgemaakt van een gradient boosting model (bijvoorbeeld XGBoost) om niet-lineaire relaties tussen fysieke variabelen en de doelvariabele te kunnen modelleren.
+
+De dataset wordt opgesplitst in trainings- en testdata, waarbij cross-validatie wordt toegepast om overfitting te vermijden. Modelperformantie wordt geëvalueerd aan de hand van geschikte metrics, zoals accuracy, F1-score of RMSE, afhankelijk van het type doelvariabele.
+
+\section{Modelinterpretatie via SHAP}
+
+Om het relatieve belang van individuele fysieke variabelen te bepalen, wordt gebruikgemaakt van SHAP (SHapley Additive exPlanations). SHAP-waarden kwantificeren de bijdrage van elke feature aan de voorspelling van het model.
+
+Voor elke speler wordt de gemiddelde absolute SHAP-waarde per feature berekend over meerdere wedstrijden. Deze waarden representeren de effectieve impact van fysieke prestaties op de modeloutput.
+
+\section{Constructie van de fysieke spelersscore}
+
+De fysieke spelersscore wordt geconstrueerd op basis van de geaggregeerde SHAP-waarden. Concreet wordt per speler:
+
+\begin{enumerate}
+    \item De gemiddelde absolute SHAP-impact berekend over een vooraf bepaalde periode.
+    \item Deze impact genormaliseerd binnen de betreffende positie.
+    \item Geschaald naar een interpreteerbare score tussen 0 en 100.
+\end{enumerate}
+
+De resulterende score weerspiegelt de relatieve fysieke bijdrage van een speler binnen zijn positie, op een reproduceerbare en data-gedreven manier.
+
+\section{Validatie van de score}
+
+De ontwikkelde fysieke score wordt geëvalueerd op basis van:
+
+\begin{itemize}
+    \item Stabiliteit over meerdere wedstrijden
+    \item Consistentie binnen positie
+    \item Vergelijking met de huidige subjectieve fysieke beoordeling binnen de club
+\end{itemize}
+
+Deze validatie laat toe om de praktische bruikbaarheid van de voorgestelde methode te beoordelen en aanbevelingen te formuleren voor implementatie binnen de scoutingwerking.
