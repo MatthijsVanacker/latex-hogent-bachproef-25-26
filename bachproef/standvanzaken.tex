@@ -1,51 +1,58 @@
 \chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}%
 \label{ch:stand-van-zaken}
 
-% Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
-% dit hoofdstuk past binnen het geheel van de bachelorproef. Geef in het
-% bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
+\section{Inleiding}
 
-% Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
+De digitalisering van het moderne voetbal heeft geleid tot een sterke toename in beschikbare data over spelers en wedstrijden. Professionele clubs maken gebruik van geavanceerde analysetechnieken om prestaties te evalueren, blessures te voorkomen en gerichter spelers te rekruteren. In deze context speelt artificiële intelligentie (AI) een steeds grotere rol. AI verwijst naar computersystemen die taken uitvoeren waarvoor normaal menselijke intelligentie vereist is, zoals patroonherkenning en besluitvorming. Een belangrijk onderdeel hiervan is \textit{machine learning} (ML), waarbij algoritmen automatisch patronen leren uit historische data om voorspellingen te doen.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+Binnen scouting — het proces waarbij spelers worden geëvalueerd en geselecteerd — biedt ML mogelijkheden om objectiever en consistenter talent te identificeren. Verschillende studies onderzochten reeds hoe datagedreven technieken kunnen bijdragen aan spelersanalyse, prestatievoorspelling en talentdetectie.
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+\section{Machine learning in voetbalanalyse}
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+Een uitgebreide overzichtsstudie van \cite{Rico-González2023} toont aan dat ML in voetbal hoofdzakelijk wordt toegepast in drie domeinen: blessurevoorspelling, prestatieanalyse en talentidentificatie. Vooral in prestatieanalyse worden voorspellende modellen gebruikt om wedstrijdresultaten, fysieke belasting en technische acties te analyseren. De auteurs benadrukken dat ML-modellen sterk afhankelijk zijn van voldoende grote datasets, wat essentieel is voor betrouwbare voorspellingen.
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+Ook \cite{yunus-2024} bevestigen via een systematische literatuurstudie dat datagedreven scouting steeds belangrijker wordt. Zij benadrukken specifiek het belang van het standaardiseren van fysieke meetgegevens, zodat spelers objectief kunnen worden vergeleken. Dit is cruciaal omdat subjectieve beoordelingen van scouts kunnen leiden tot inconsistente evaluaties.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{grail.jpg}
-  \caption[Voorbeeld figuur.]{\label{fig:grail}Voorbeeld van invoegen van een figuur. Zorg altijd voor een uitgebreid bijschrift dat de figuur volledig beschrijft zonder in de tekst te moeten gaan zoeken. Vergeet ook je bronvermelding niet!}
-\end{figure}
+\section{Datagedreven scouting en spelersrekrutering}
 
-\begin{listing}
-  \begin{minted}{python}
-    import pandas as pd
-    import seaborn as sns
+Volgens \cite{HenriettaVuorenmaa} helpt AI sportclubs bij het objectiveren van rekruteringsprocessen. Traditionele scouting steunt sterk op observaties en intuïtie van experts, terwijl AI-systemen grote hoeveelheden spelersdata kunnen analyseren om verborgen patronen te detecteren. Hierdoor kunnen clubs efficiënter spelers identificeren die passen binnen hun speelstijl en budget.
 
-    penguins = sns.load_dataset('penguins')
-    sns.relplot(data=penguins, x="flipper_length_mm", y="bill_length_mm", hue="species")
-  \end{minted}
-  \caption[Voorbeeld codefragment]{Voorbeeld van het invoegen van een codefragment.}
-\end{listing}
+Een concreet voorbeeld hiervan is het werk van \cite{9680132}, waarin een datagedreven scoutingsysteem wordt voorgesteld dat toekomstige spelersprestaties simuleert. Simulatie betekent hier dat een model voorspelt hoe een speler zou presteren in andere omstandigheden, bijvoorbeeld in een andere competitie of ploeg. Deze aanpak helpt clubs om transferbeslissingen beter te onderbouwen.
 
-\lipsum[7-20]
+De studie van \cite{liam-2022} bespreekt de zogenaamde “Moneyball”-benadering in voetbal, waarbij statistische analyse centraal staat bij spelersselectie. Clubs zoals Brentford FC tonen aan dat een systematische, cijfermatige aanpak kan leiden tot competitief voordeel tegenover financieel sterkere clubs.
 
-\begin{table}
-  \centering
-  \begin{tabular}{lcr}
-    \toprule
-    \textbf{Kolom 1} & \textbf{Kolom 2} & \textbf{Kolom 3} \\
-    $\alpha$         & $\beta$          & $\gamma$         \\
-    \midrule
-    A                & 10.230           & a                \\
-    B                & 45.678           & b                \\
-    C                & 99.987           & c                \\
-    \bottomrule
-  \end{tabular}
-  \caption[Voorbeeld tabel]{\label{tab:example}Voorbeeld van een tabel.}
-\end{table}
+\section{Fysieke prestaties als voorspellende factor}
 
+Verschillende onderzoekers benadrukken het belang van fysieke prestatiegegevens. Moderne spelers worden voortdurend gemonitord via GPS-systemen en draagbare sensoren die loopafstanden, snelheden en intensiteit meten.
+
+Een praktijkstudie bij de jeugdopleiding van \cite{sports6040130} toont hoe trackingdata inzicht geven in fysieke belasting tijdens trainingen en wedstrijden. Deze gegevens helpen bij het optimaliseren van trainingsprogramma’s en het begrijpen van positionele verschillen in fysieke inspanningen.
+
+Daarnaast tonen \cite{Bongiovanni04052021} aan dat lichaamskenmerken (zoals lengte en gewicht) via ML-modellen belangrijke voorspellers kunnen zijn van fysieke prestaties bij jeugdspelers. Dit bevestigt dat objectieve fysieke parameters bruikbaar zijn in talentidentificatie.
+
+Ook \cite{Cortez2021PredictingPV} tonen aan dat fysiologische variabelen kunnen helpen bij het voorspellen van teamsucces. Hun ML-modellen identificeren welke fysieke kenmerken het sterkst bijdragen aan winnende prestaties.
+
+\section{Voorspellende modellen voor prestaties en wedstrijden}
+
+ML wordt niet enkel gebruikt om individuele spelers te analyseren, maar ook om te voorspellen hoe teams presteren.
+
+Zo vergelijken \cite{de-vulder-2024} verschillende ML-modellen voor het voorspellen van wedstrijduitslagen, terwijl \cite{Almulla2020MachineLM} aantonen welke spelersstatistieken het sterkst bijdragen aan winstkansen. Deze modellen gebruiken historische wedstrijddata om patronen te leren die verband houden met succes.
+
+Trackingdata blijkt hierbij bijzonder waardevol. \cite{Fernndez2016FromTT} tonen aan dat positiedata van spelers tijdens wedstrijden kunnen worden gebruikt om prestaties te verklaren en te voorspellen. Ook \cite{EasyChair:993} bevestigen dat tactische en positionele statistieken bruikbaar zijn voor het voorspellen van wedstrijdresultaten.
+
+Verder richten \cite{Morciano2022MachineLP} zich op het voorspellen van trainingsprestaties via ML-technieken, wat clubs helpt om spelersontwikkeling beter te monitoren.
+
+\section{Geavanceerde scoutingsystemen}
+
+Recent onderzoek focust op geïntegreerde scoutingsplatformen.
+
+\cite{10544261} introduceren een scoutingsysteem gebaseerd op \textit{Expected Goals} (xG), een statistiek die de kwaliteit van scoringskansen meet. ML-modellen analyseren hierbij onderliggende prestatie-indicatoren om spelers objectief te vergelijken.
+
+Daarnaast stellen \cite{11203706} het KickClone-systeem voor, dat spelers vergelijkt via \textit{Principal Component Analysis} (PCA). PCA is een techniek die grote hoeveelheden variabelen reduceert tot enkele kerncomponenten die de belangrijkste verschillen tussen spelers samenvatten.
+
+De studie van \cite{sports13110402} introduceert fysieke prestatieprofielen op basis van PCA-clustering. Hierbij worden spelers gegroepeerd volgens fysieke kenmerken in plaats van tactische posities, wat nieuwe inzichten biedt voor gepersonaliseerde training en scouting.
+
+\section{Conclusie van de literatuur}
+
+Uit de literatuur blijkt dat machine learning een belangrijke rol speelt in de evolutie naar objectieve en datagedreven scouting. Vooral fysieke en fysiologische spelersgegevens blijken waardevol voor prestatieanalyse en talentidentificatie. Verschillende studies tonen aan dat ML-modellen verborgen patronen kunnen detecteren die moeilijk waarneembaar zijn voor menselijke scouts.
+
+Toch benadrukken meerdere auteurs dat datakwaliteit, standaardisatie en voldoende datasetgrootte cruciale voorwaarden zijn voor betrouwbare modellen. De combinatie van fysieke prestatie-indicatoren en voorspellende ML-technieken vormt een veelbelovende onderzoekslijn voor het objectiveren van spelersbeoordelingen binnen professionele voetbalcontexten.
