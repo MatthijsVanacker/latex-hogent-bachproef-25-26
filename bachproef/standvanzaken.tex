@@ -1,58 +1,108 @@
 \chapter{\IfLanguageName{dutch}{Stand van zaken}{State of the art}}%
 \label{ch:stand-van-zaken}
 
-\section{Inleiding}
+\section{Inleiding: Data in het moderne voetbal}
+ 
+Het professionele voetbal heeft de afgelopen decennia een ware datarevolutie ervaren. Waar coaches en analisten vroeger uitsluitend vertrouwden op visuele observaties en persoonlijke ervaring, beschikken clubs tegenwoordig over enorme hoeveelheden gedetailleerde prestatiedata~\autocite{ObiEtAl2024}. GPS-trackers, optische volgcamera's en draagbare sensoren registreren elke beweging van elke speler gedurende een volledige wedstrijd of training: afgelegde afstand, sprintfrequentie, versnellingen, vertragingen en maximale loopsnelheid behoren tot de standaardoutput van moderne trackingsystemen~\autocite{sports6040130}.
+ 
+Deze datarevolutie wordt mede aangedreven door de commerciële en competitieve druk binnen de topsport. Clubs investeren steeds meer in sportwetenschap en data-analyse om een competitief voordeel te behalen~\autocite{HoutmeyersEtAl2021}. Tegelijkertijd heeft de beschikbaarheid van grootschalige datasets de interesse vanuit de academische wereld gewekt, wat heeft geleid tot een groeiende hoeveelheid aan onderzoek op het snijvlak van machine learning en voetbal~\autocite{Rico-González2023}.
+ 
+De hoeveelheid beschikbare data is echter ook een uitdaging op zich. Traditionele statistische methoden schieten tekort wanneer het gaat om het analyseren van complexe, onderling afhankelijke variabelen in een dynamische omgeving zoals voetbal~\autocite{DavisEtAl2024}. Machine learning biedt een krachtig alternatief: algoritmen die patronen kunnen ontdekken in grote datasets zonder dat elk patroon expliciet geprogrammeerd hoeft te worden. Dit heeft geleid tot een brede toepassing van machine learning in het voetbal, van wedstrijdanalyse en scoutingsondersteuning tot blessurepreventie en fysiek prestatiemanagement.
+ 
+\section{Machine learning in het voetbal}
+ 
+\subsection{Wedstrijdanalyse en uitkomstvoorspelling}
+ 
+Een van de meest onderzochte toepassingen van machine learning in het voetbal is het voorspellen van wedstrijduitkomsten. Verschillende studies hebben aangetoond dat modellen op basis van technische en tactische statistieken, zoals balbezit, schoten op doel en passnauwkeurigheid, een zekere voorspellende waarde hebben voor het wedstrijdresultaat~\autocite{BigData2024_SoccerOutcomePrediction}. \textcite{goes-2019} toonden aan dat tactische prestatievariabelen berekend uit positionele trackingdata gebruikt kunnen worden om wedstrijduitkomsten te voorspellen in het professionele Nederlandse voetbal.
+ 
+\textcite{Cortez2021PredictingPV} onderzochten specifiek welke fysiologische en fysieke variabelen het meest bijdragen aan een winnend voetbalteam gebruik makende van een machine learning-aanpak. Hun bevindingen benadrukken dat fysieke prestaties, hoewel niet de enige bepalende factor, een meetbare bijdrage leveren aan wedstrijduitkomsten. \textcite{Almulla2020MachineLM} bereikten vergelijkbare conclusies in de Qatar Stars League, waarbij machine learning-modellen sleutelprestatievariabelen identificeerden die verband houden met het winnen van wedstrijden. Ook binnen de Belgische context werd dit thema verkend: \textcite{de-vulder-2024} voerde een vergelijkende analyse uit van verschillende machine learning-modellen voor de voorspelling van wedstrijduitslagen bij Club Brugge.
+ 
+Een belangrijke methodologische uitdaging bij dit type onderzoek is de lage verklarende kracht van modellen die uitsluitend op één type data steunen. \textcite{DavisEtAl2024} benadrukken dat voetbaluitkomsten worden bepaald door een complexe combinatie van technische, tactische, fysieke en stochastische factoren, waardoor geen enkel model een hoge voorspellingsnauwkeurigheid kan bereiken op basis van slechts één datadimensie. Dit impliceert niet dat zulke modellen waardeloos zijn: zelfs bij lage absolute voorspellingsprestaties kunnen de geleerde gewichten en feature-importances waardevolle inzichten bieden in welke attributen \textit{relatief} het meest bijdragen \autocite{DavisEtAl2024}.
+ 
+\subsection{Scouting en spelersranking}
+ 
+Naast wedstrijdanalyse heeft machine learning ook een sterke voet aan de grond gekregen in het scouting- en recruitmentproces. Traditioneel verliep scouting bijna uitsluitend via menselijke observatie, wat tijdsintensief, subjectief en kostbaar is~\autocite{CallinanEtAl2023}. Data-gedreven methoden bieden een schaalbaar alternatief dat scouts in staat stelt om grotere spelerspopulaties te evalueren en subjectieve vooroordelen te verminderen~\autocite{HenriettaVuorenmaa}.
+ 
+De zogeheten \textit{Moneyball}-aanpak, oorspronkelijk afkomstig uit het honkbal, heeft ook in het voetbal ingang gevonden. \textcite{liam-2022} analyseerde hoe Brentford FC een statistische benadering adopteerde als competitief voordeel, met opmerkelijk succes voor een club met beperkte financiële middelen. Dit illustreert hoe data-gedreven scouting niet uitsluitend voorbehouden is aan topclubs.
+ 
+\textcite{Pappalardo2018_PlayeRank} ontwikkelden PlayeRank, een data-gedreven framework voor het evalueren en ranken van voetbalspelers op basis van event-data. Hun aanpak combineert meerdere prestatievariabelen tot één samengestelde score, rekening houdend met de positie van de speler en het competitieniveau. Dit concept, het omzetten van meerdimensionale prestatiedata naar één vergelijkbare score, vormt ook de basis van het onderzoek in deze thesis, maar dan specifiek toegepast op fysieke trackingdata. Een verwante aanpak werd uitgewerkt door \textcite{10544261}, die een scoutingsysteem op basis van verwachte doelpunten (\textit{expected goals}, xG) ontwikkelden met behulp van machine learning.
+ 
+\textcite{yunus-2024} benadrukken in hun systematische review dat het standaardiseren van fitnessdata een cruciale stap is voorafgaand aan elke vergelijkende spelersanalyse, aangezien fysieke data sterk variëren tussen competities, clubs en meetmethoden. Dit sluit aan bij de methodologische keuze in deze thesis om fysieke statistieken te standaardiseren per competitie en positiegroep vóór verdere analyse.
+ 
+\subsection{Trainingsbegeleiding en blessurepreventie}
+ 
+Een derde toepassingsgebied is het optimaliseren van trainingsbelasting en het voorkomen van blessures. \textcite{HoutmeyersEtAl2021} onderzochten hoe belastingsmonitoring in de praktijk wordt toegepast bij Europese eliteclubs en welke rol clubcultuur en financiële middelen daarin spelen. Hun studie toont aan dat de adoptie van datagedreven trainingsopvolging sterk varieert tussen clubs. Coaches zijn bovendien niet altijd even vertrouwd met data-analyse: \textcite{AnyadikeDanesEtAl2023} stelden in een internationale bevraging vast dat coachpercepties over trainingsadaptatie sterk uiteenlopen en niet steeds overeenstemmen met wetenschappelijke inzichten.
+ 
+\textcite{Mandorino2023_PlayerReadiness} ontwikkelden een machine learning-aanpak om de spelersgereedheid (\textit{player readiness}) te kwantificeren aan de hand van fysieke trainingsdata. \textcite{Fernndez2016FromTT} onderzochten de relatie tussen trainingsdata en wedstrijdprestaties via voorspellende modellen op basis van trackingdata, en toonden aan dat trainingsintensiteit voorspellende waarde heeft voor individuele wedstrijdprestaties. \textcite{sports6040130} presenteren een gevalsstudie van Chelsea FC Academy, waarbij trackingdata worden ingezet als instrument voor fysiek prestatiemanagement op lange termijn.
+ 
+\textcite{sports13110402} introduceerden een aanpak voor het opstellen van prestatieprofielen op basis van fysieke trainingsaspecten, en tonen aan dat fysieke profielen een waardevolle aanvulling vormen op technisch-tactische analyses. \textcite{CalderonDiaz2023_ExplainableML_Soccer} pasten explainbare machine learning-technieken toe om spierblessures bij professionele spelers te voorspellen via biomechanische analyse. Hun gebruik van SHAP-waarden (\textit{SHapley Additive exPlanations}) om modeluitkomsten te interpreteren is methodologisch relevant voor deze thesis, die een vergelijkbare aanpak hanteert om de bijdrage van individuele fysieke attributen zichtbaar te maken.
+ 
+\section{SkillCorner als databron}
+ 
+\subsection{Technologie en werkwijze}
+ 
+De fysieke data die in dit onderzoek worden gebruikt, zijn afkomstig van SkillCorner, een Parijse sportdatabedrijf opgericht in 2015~\autocite{skillcorner-website}. Waar traditionele trackingsystemen afhankelijk zijn van dure vaste camerasinstallaties in elk stadion, onderscheidt SkillCorner zich door trackingdata te extraheren uit bestaand uitzendmateriaal via computer vision en machine learning~\autocite{skillcorner-opendata}. Dit maakt het mogelijk om spelers te volgen over meer dan 120 competities wereldwijd, zonder dat per stadion een afzonderlijke infrastructuur vereist is~\autocite{skillcorner-website}.
+ 
+De technologische pipeline van SkillCorner bestaat uit meerdere opeenvolgende stappen: beeldherkenning om te bepalen of een frame van de hoofdcamera of een herhaling afkomstig is, detectie en classificatie van spelers, scheidsrechters en de bal, homografische schatting om de tweedimensionale beeldcoördinaten om te zetten naar velddcoördinaten, en temporele tracking om detecties van frame tot frame te verbinden. Wanneer spelers buiten beeld zijn, voorspelt een extrapolatiemodel hun meest waarschijnlijke positie, zodat een ononderbroken datasignaal beschikbaar blijft voor de volledige negentig minuten.
+ 
+\subsection{Fysieke metrieken}
+ 
+Uit de positionele trackingdata leidt SkillCorner een reeks gestandaardiseerde fysieke metrieken af die toelaten om spelers objectief te vergelijken over competities en seizoenen heen. De voornaamste metrieken die in dit onderzoek worden gebruikt zijn:
+ 
+\begin{itemize}
+    \item \textbf{Totale afstand} en \textbf{loopafstand}: totale afgelegde afstand en afstand afgelegd boven een bepaalde snelheidsdrempel per wedstrijd.
+    \item \textbf{High Speed Running (HSR)}: afstand en aantal acties afgelegd tussen 20 en 25 km/u.
+    \item \textbf{Sprintafstand en sprintaantal}: afstand en acties boven 25 km/u
+    \item \textbf{High Intensity (HI)}: combinatie van HSR en sprint, alle acties boven 20 km/u.
+    \item \textbf{PSV-99} (\textit{Peak Sprint Velocity 99th percentile}): de 99e percentiel van de maximale snelheid van een speler, als maat voor de herhaaldelijk haalbare topsnelheid
+    \item \textbf{Versnellingen en vertragingen}: aantallen matige en hoge versnellingen en vertragingen per wedstrijd.
+    \item \textbf{Change of Direction (COD)}: het aantal richtingswisselingen uitgevoerd op hoge intensiteit.
+\end{itemize}
+ 
+Deze metrieken worden genormaliseerd per negentig minuten speeltijd om vergelijkingen tussen spelers met verschillende speelminuten mogelijk te maken.
+ 
+\subsection{Toepassing in fysieke scouting}
+ 
+De brede competitiedekking van SkillCorner maakt de data bijzonder waardevol voor scoutingsdoeleinden. Clubs kunnen via de data de fysieke capaciteiten van spelers in minder bekende competities vergelijken met die van spelers in topcompetities, op basis van gestandaardiseerde metrieken~\autocite{skillcorner-website}. Dit sluit aan bij de bevindingen van \textcite{yunus-2024}, die standaardisatie van fitnessdata identificeren als een sleutelvoorwaarde voor betrouwbare spelervergelijking.
+ 
+In het kader van dit project werd door de betrokken club een dashboard ontwikkeld dat de fysieke scores van spelers, berekend via de in deze thesis beschreven methode, visualiseert en doorzoekbaar maakt voor de scoutingstaf. Dit dashboard laat toe om spelers te filteren op positiegroep, competitie en seizoen, en plaatst hun fysieke score in de context van hun leeftijd en speelminuten. Op die manier fungeert de thesis niet enkel als academisch onderzoek, maar levert ze ook een direct inzetbaar instrument op voor het fysieke scoutingproces van de club.
 
-De digitalisering van het moderne voetbal heeft geleid tot een sterke toename in beschikbare data over spelers en wedstrijden. Professionele clubs maken gebruik van geavanceerde analysetechnieken om prestaties te evalueren, blessures te voorkomen en gerichter spelers te rekruteren. In deze context speelt artificiële intelligentie (AI) een steeds grotere rol. AI verwijst naar computersystemen die taken uitvoeren waarvoor normaal menselijke intelligentie vereist is, zoals patroonherkenning en besluitvorming. Een belangrijk onderdeel hiervan is \textit{machine learning} (ML), waarbij algoritmen automatisch patronen leren uit historische data om voorspellingen te doen.
-
-Binnen scouting — het proces waarbij spelers worden geëvalueerd en geselecteerd — biedt ML mogelijkheden om objectiever en consistenter talent te identificeren. Verschillende studies onderzochten reeds hoe datagedreven technieken kunnen bijdragen aan spelersanalyse, prestatievoorspelling en talentdetectie.
-
-\section{Machine learning in voetbalanalyse}
-
-Een uitgebreide overzichtsstudie van \cite{Rico-González2023} toont aan dat ML in voetbal hoofdzakelijk wordt toegepast in drie domeinen: blessurevoorspelling, prestatieanalyse en talentidentificatie. Vooral in prestatieanalyse worden voorspellende modellen gebruikt om wedstrijdresultaten, fysieke belasting en technische acties te analyseren. De auteurs benadrukken dat ML-modellen sterk afhankelijk zijn van voldoende grote datasets, wat essentieel is voor betrouwbare voorspellingen.
-
-Ook \cite{yunus-2024} bevestigen via een systematische literatuurstudie dat datagedreven scouting steeds belangrijker wordt. Zij benadrukken specifiek het belang van het standaardiseren van fysieke meetgegevens, zodat spelers objectief kunnen worden vergeleken. Dit is cruciaal omdat subjectieve beoordelingen van scouts kunnen leiden tot inconsistente evaluaties.
-
-\section{Datagedreven scouting en spelersrekrutering}
-
-Volgens \cite{HenriettaVuorenmaa} helpt AI sportclubs bij het objectiveren van rekruteringsprocessen. Traditionele scouting steunt sterk op observaties en intuïtie van experts, terwijl AI-systemen grote hoeveelheden spelersdata kunnen analyseren om verborgen patronen te detecteren. Hierdoor kunnen clubs efficiënter spelers identificeren die passen binnen hun speelstijl en budget.
-
-Een concreet voorbeeld hiervan is het werk van \cite{9680132}, waarin een datagedreven scoutingsysteem wordt voorgesteld dat toekomstige spelersprestaties simuleert. Simulatie betekent hier dat een model voorspelt hoe een speler zou presteren in andere omstandigheden, bijvoorbeeld in een andere competitie of ploeg. Deze aanpak helpt clubs om transferbeslissingen beter te onderbouwen.
-
-De studie van \cite{liam-2022} bespreekt de zogenaamde “Moneyball”-benadering in voetbal, waarbij statistische analyse centraal staat bij spelersselectie. Clubs zoals Brentford FC tonen aan dat een systematische, cijfermatige aanpak kan leiden tot competitief voordeel tegenover financieel sterkere clubs.
-
-\section{Fysieke prestaties als voorspellende factor}
-
-Verschillende onderzoekers benadrukken het belang van fysieke prestatiegegevens. Moderne spelers worden voortdurend gemonitord via GPS-systemen en draagbare sensoren die loopafstanden, snelheden en intensiteit meten.
-
-Een praktijkstudie bij de jeugdopleiding van \cite{sports6040130} toont hoe trackingdata inzicht geven in fysieke belasting tijdens trainingen en wedstrijden. Deze gegevens helpen bij het optimaliseren van trainingsprogramma’s en het begrijpen van positionele verschillen in fysieke inspanningen.
-
-Daarnaast tonen \cite{Bongiovanni04052021} aan dat lichaamskenmerken (zoals lengte en gewicht) via ML-modellen belangrijke voorspellers kunnen zijn van fysieke prestaties bij jeugdspelers. Dit bevestigt dat objectieve fysieke parameters bruikbaar zijn in talentidentificatie.
-
-Ook \cite{Cortez2021PredictingPV} tonen aan dat fysiologische variabelen kunnen helpen bij het voorspellen van teamsucces. Hun ML-modellen identificeren welke fysieke kenmerken het sterkst bijdragen aan winnende prestaties. Deze studie bewijst dat het onderzoek naar de waarde van fysieke prestatie-indicatoren een meerwaarde kan bieden voor datagedreven scouting.
-
-\section{Voorspellende modellen voor prestaties en wedstrijden}
-
-ML wordt niet enkel gebruikt om individuele spelers te analyseren, maar ook om te voorspellen hoe teams presteren.
-
-Zo vergelijken \cite{de-vulder-2024} verschillende ML-modellen voor het voorspellen van wedstrijduitslagen, terwijl \cite{Almulla2020MachineLM} aantonen welke spelersstatistieken het sterkst bijdragen aan winstkansen. Deze modellen gebruiken historische wedstrijddata om patronen te leren die verband houden met succes.
-
-Trackingdata blijkt hierbij bijzonder waardevol. \cite{Fernndez2016FromTT} tonen aan dat positiedata van spelers tijdens wedstrijden kunnen worden gebruikt om prestaties te verklaren en te voorspellen. Ook \cite{goes-2019} bevestigen dat tactische en positionele statistieken bruikbaar zijn voor het voorspellen van wedstrijdresultaten.
-
-Verder richten \cite{Morciano2022MachineLP} zich op het voorspellen van trainingsprestaties via ML-technieken, wat clubs helpt om spelersontwikkeling beter te monitoren.
-
-\section{Geavanceerde scoutingsystemen}
-
-Recent onderzoek focust op geïntegreerde scoutingsplatformen.
-
-\cite{10544261} introduceren een scoutingsysteem gebaseerd op \textit{Expected Goals} (xG), een statistiek die de kwaliteit van scoringskansen meet. ML-modellen analyseren hierbij onderliggende prestatie-indicatoren om spelers objectief te vergelijken.
-
-Daarnaast stellen \cite{11203706} het KickClone-systeem voor, dat spelers vergelijkt via \textit{Principal Component Analysis} (PCA). PCA is een techniek die grote hoeveelheden variabelen reduceert tot enkele kerncomponenten die de belangrijkste verschillen tussen spelers samenvatten.
-
-De studie van \cite{sports13110402} introduceert fysieke prestatieprofielen op basis van PCA-clustering. Hierbij worden spelers gegroepeerd volgens fysieke kenmerken in plaats van tactische posities, wat nieuwe inzichten biedt voor gepersonaliseerde training en scouting.
-
-\section{Conclusie van de literatuur}
-
-Uit de literatuur blijkt dat machine learning een belangrijke rol speelt in de evolutie naar objectieve en datagedreven scouting. Vooral fysieke en fysiologische spelersgegevens blijken waardevol voor prestatieanalyse en talentidentificatie. Verschillende studies tonen aan dat ML-modellen verborgen patronen kunnen detecteren die moeilijk waarneembaar zijn voor menselijke scouts.
-
-Toch benadrukken meerdere auteurs dat datakwaliteit, standaardisatie en voldoende datasetgrootte cruciale voorwaarden zijn voor betrouwbare modellen. De combinatie van fysieke prestatie-indicatoren en voorspellende ML-technieken vormt een veelbelovende onderzoekslijn voor het objectiveren van spelersbeoordelingen binnen professionele voetbalcontexten.
+\section{Machine learning}
+ 
+\subsection{Basisconcepten}
+ 
+Machine learning is een deelgebied van artificiële intelligentie waarbij algoritmen patronen leren uit data zonder dat het gewenste gedrag expliciet geprogrammeerd wordt~\autocite{Pietraszewski2025_AI_SportsAnalytics}. In plaats van vaste regels te volgen, optimaliseert een machine learning-model zijn parameters op basis van trainingsvoorbeelden, met als doel zo goed mogelijk te generaliseren naar nieuwe, ongeziene data~\autocite{geron-2023}.
+ 
+Er wordt een fundamenteel onderscheid gemaakt tussen \textit{gesuperviseerd leren} (\textit{supervised learning}) en \textit{ongesuperviseerd leren} (\textit{unsupervised learning}). Bij gesuperviseerd leren worden de trainingsvoorbeelden voorzien van een label of doelwaarde, bijvoorbeeld de uitkomst van een wedstrijd of de eindscore van een speler, en leert het model een afbeelding van invoervariabelen naar die doelwaarde. Bij ongesuperviseerd leren zijn er geen labels beschikbaar en probeert het algoritme zelf structuur te ontdekken in de data, zoals clusters van vergelijkbare spelers of posities~\autocite{Rico-González2023,geron-2023}.
+ 
+\subsection{Gesuperviseerd leren: regressie en classificatie}
+ 
+Binnen gesuperviseerd leren wordt verder onderscheid gemaakt tussen \textit{regressie} en \textit{classificatie}. Bij regressie is de doelwaarde continu, zoals het doelpuntenverschil in een wedstrijd. Bij classificatie is de doelwaarde categorisch, zoals het wedstrijdresultaat (winst, gelijkspel of verlies)~\autocite{geron-2023}.
+ 
+Lineaire regressiemodellen, zoals Ridge- en Lasso-regressie, modelleren een lineaire relatie tussen invoervariabelen en de doelwaarde. Ridge-regressie voegt een L2-regularisatieterm toe aan de kostfunctie om overfitting te vermijden, terwijl Lasso-regressie via L1-regularisatie automatisch irrelevante variabelen naar nul duwt en zo impliciete variabeleselectie uitvoert~\autocite{geron-2023}. Deze modellen zijn goed interpreteerbaar, de coëfficiënten geven direct de richting en relatieve grootte van het effect van elke variabele aan, maar ze gaan ervan uit dat de relaties in de data lineair en additief zijn, wat in de context van voetbalprestaties zelden het geval is~\autocite{Almulla2020MachineLM}.
+ 
+Wanneer de relaties complexer of niet-lineair zijn, bieden boomgebaseerde methoden een krachtig alternatief. \textit{Beslissingsbomen} (\textit{decision trees}) splitsen de data recursief op basis van de meest informatieve variabele op elk knooppunt. \textit{Ensemble-methoden} zoals Random Forests en Gradient Boosted Trees combineren meerdere beslissingsbomen om de variantie te verlagen en de voorspellingsprestaties te verbeteren~\autocite{BigData2024_SoccerOutcomePrediction,geron-2023}.
+ 
+\subsection{Gradient boosting: XGBoost}
+ 
+XGBoost (\textit{eXtreme Gradient Boosting}) is een bijzonder efficiënte en veelgebruikte implementatie van gradient boosting, ontwikkeld door \textcite{chen-2016}. Het model bouwt iteratief een ensemble van beslissingsbomen op, waarbij elke nieuwe boom de resterende fouten van het vorige ensemble corrigeert via gradientafdaling in de functieruimte. XGBoost ondersteunt zowel regressie- als classificatietaken en biedt ingebouwde L1- en L2-regularisatie om overfitting te beperken~\autocite{chen-2016}.
+ 
+Een belangrijk voordeel van boomgebaseerde modellen in de context van sportanalyse is hun vermogen om niet-lineaire interacties tussen variabelen op te vangen~\autocite{Mandorino2023_PlayerReadiness}. De fysieke prestatiekenmerken van een voetbalspeler interageren immers op complexe wijze: een hoge sprintafstand gecombineerd met een hoog aantal versnellingen levert mogelijk meer informatie op dan beide variabelen afzonderlijk. XGBoost werd reeds succesvol toegepast in verschillende voetbalanalysestudies, onder meer voor de voorspelling van wedstrijduitkomsten~\autocite{BigData2024_SoccerOutcomePrediction} en de kwantificering van spelersgereedheid~\autocite{Mandorino2023_PlayerReadiness}.
+ 
+\subsection{Modelinterpretatie: SHAP-waarden}
+ 
+Een traditioneel nadeel van complexe machine learning-modellen zoals XGBoost is hun beperkte interpreteerbaarheid: het is niet altijd duidelijk \textit{waarom} een model een bepaalde voorspelling maakt. Om dit probleem aan te pakken, ontwikkelden \textcite{lundberg-2017} de SHAP-methode (\textit{SHapley Additive exPlanations}), een theoretisch gefundeerd kader voor het toewijzen van bijdragen aan individuele variabelen.
+ 
+SHAP-waarden zijn gebaseerd op het concept van Shapley-waarden uit de speltheorie en meten voor elke variabele hoeveel deze de voorspelling van het model verschuift ten opzichte van de gemiddelde voorspelling~\autocite{lundberg-2017}. Dit levert per observatie én per variabele een concrete bijdragewaarde op, wat het mogelijk maakt om zowel globale als lokale modelverklaringen te genereren. De \texttt{TreeExplainer}-implementatie in de SHAP-bibliotheek is specifiek geoptimaliseerd voor boomgebaseerde modellen en berekent exacte Shapley-waarden in polynomiale tijd~\autocite{lundberg-2017}. \textcite{CalderonDiaz2023_ExplainableML_Soccer} pasten deze methode eerder toe in een voetbalcontext om spierblessures te voorspellen en modeluitkomsten interpreteerbaar te maken voor sportprofessionals.
+ 
+In de context van deze thesis worden SHAP-waarden gebruikt om te bepalen welke fysieke attributen het meest bijdragen aan de classificatie van het wedstrijdresultaat door het XGBoost-model. Door de gemiddelde absolute SHAP-waarden per variabele en per positiegroep te berekenen, worden gewichten verkregen die de relatieve fysieke importantie per positie weerspiegelen.
+ 
+\subsection{Modelvalidatie}
+ 
+Een cruciaal aspect van elk machine learning-onderzoek is een correcte validatiemethodologie. \textcite{DavisEtAl2024} wijzen erop dat onzorgvuldige validatie, zoals het evalueren op trainingsdata of het negeren van temporele afhankelijkheden, leidt tot overschatting van modelprestaties en onbetrouwbare conclusies. \textit{Kruisvalidatie} (\textit{k-fold cross-validation}) is een standaardtechniek waarbij de data herhaaldelijk opgesplitst wordt in trainings- en validatiesets, zodat de gerapporteerde prestaties een betrouwbare schatting geven van de generalisatiecapaciteit van het model~\autocite{geron-2023,DavisEtAl2024}.
+ 
+Voor het extraheren van stabiele feature-importances past deze thesis een \textit{gestratificeerde kruisvalidatie} toe: het model wordt $k$ keer getraind op verschillende deelsets van de data, waarna de SHAP-importances gemiddeld worden over alle splits. Dit reduceert de variantie in de gewichten en verhoogt de betrouwbaarheid van de uiteindelijke spelersscores.
+ 
+\subsection{Gebruik van grote taalmodellen}
+ 
+Bij de ontwikkeling van de code en de methodologische uitwerking in deze thesis werd gebruik gemaakt van Claude, een groot taalmodel (\textit{large language model}, LLM) ontwikkeld door Anthropic~\autocite{anthropic-claude-2025}. Het model werd ingezet als codeerhulp en klankbord bij het uitwerken van de dataverwerkingspipeline, de modelarchitectuur en de interpretatie van resultaten. Alle methodologische keuzes, validaties en conclusies zijn door de auteur zelf beoordeeld en verantwoord.
