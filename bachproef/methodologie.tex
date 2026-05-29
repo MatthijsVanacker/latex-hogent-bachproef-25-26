@@ -9,27 +9,27 @@
 
 Het doel van deze bachelorproef is het ontwikkelen van een interpreteerbare en reproduceerbare fysieke spelersscore ter ondersteuning van objectieve voetbalscouting. De realisatie hiervan hanteert een data-gedreven methodologie waarbij machine learning-modellen worden ingezet om het relatieve belang van fysieke prestatie-indicatoren te bepalen.
 
-Er wordt gekozen voor een hybride aanpak waarbij supervised learning gecombineerd wordt met model-interpretatietechnieken. Daarnaast bekijkt het onderzoek naar het belang van de fysieke prestatie-indicatoren per positiegroep, zo worden de fysieke rolvereisten per positie berekend.
+Er wordt gekozen voor een hybride aanpak waarbij supervised learning gecombineerd wordt met model-interpretatietechnieken. Daarnaast onderzoekt deze studie het belang van de fysieke prestatie-indicatoren per positiegroep, zo worden de fysieke rolvereisten per positie berekend.
 
 
 
 \section{Data verzamelen}
 
-Het verzamelen van de data maakt gebruik van de dataverzamelingsmethoden van KAA Gent. De spelersdataset bestaat uit wedstrijdgerelateerde fysieke prestatie-indicatoren per speler per wedstrijd en het aantal doelpunten voor de thuis- en uitploeg in deze wedstrijden, opgehaald uit de Skillcorner data. 
+Voor het verzamelen van de data wordt gebruikgemaakt van de dataverzamelingsmethoden van KAA Gent. De spelersdataset bestaat uit wedstrijdgerelateerde fysieke prestatie-indicatoren per speler per wedstrijd en het aantal doelpunten van de thuis- en uitploeg in deze wedstrijden, opgehaald uit de Skillcorner data. 
 
 \section{Data voorbereiding}
 
-De opgehaalde data bevat nog te veel overbodigheden: 
+De opgehaalde data bevat nog te veel overbodige elementen: 
 \begin{itemize}
-    \item irrelevante features (bijvoorbeeld de \emph{afgelegde afstand} in de wedstrijd en \emph{minuten} in de wedstrijd maken \emph{afgelegde afstand per minuut} irrelevant)
+    \item irrelevante features (bijvoorbeeld de \emph{afgelegde afstand} in de wedstrijd en \emph{minuten} in de wedstrijd maken \emph{afgelegde afstand per minuut} overbodig)
     \item features met te weinig data (bijvoorbeeld een feature waar er slechts bij 30\% van de spelers een ingevulde waarde is)
     \item spelers die te weinig minuten in wedstrijden speelden (bijvoorbeeld een speler die slechts 5 minuten speelde gaat een vertekend beeld geven per 90 minuten)
 \end{itemize}
-In deze stap worden deze redundante gegevens uit de data verwijderd om met een propere dataset naar de volgende stap te kunnen gaan.
+In deze stap worden deze redundante gegevens uit de data verwijderd om met een opgeschoonde dataset naar de volgende stap te kunnen gaan.
 
 \section{Feature engineering}
 
-De kwantitatieve features worden genormaliseerd per 90 minuten om onderlinge vergelijkbaarheid te garanderen. Daarna wordt de data verder gestandardiseerd per positie (bijvoorbeeld centrale verdedigers, flankverdedigers, centrale middenvelders en flankaanvallers) en competitie, zodat verschillen in fysieke vereisten en spelcontext tussen posities en competities in rekening worden gebracht.
+De kwantitatieve features worden genormaliseerd per 90 minuten om onderlinge vergelijkbaarheid te garanderen. Daarna wordt de data verder gestandaardiseerd per positie (bijvoorbeeld centrale verdedigers, flankverdedigers, centrale middenvelders en flankaanvallers) en competitie, zodat verschillen in fysieke vereisten en spelcontext tussen posities en competities worden meegenomen.
 
 Vervolgens wordt de data per ploeg en per wedstrijd geaggregeerd op basis van het gemiddelde per positie, zodat elke rij overeenkomt met het resultaat van één wedstrijd. Op die manier is de dataset klaar om gebruikt te worden voor het trainen van het machine learning-model.
 
@@ -49,4 +49,4 @@ Vervolgens wordt voor elke speler en elke wedstrijd waarin hij minstens een bepa
 
 \section{Implementatie in dashboard}
 
-Als laatste stap worden alle spelers en hun scores gevisualiseerd op een extra pagina binnen het bestaande dashboard. Op deze pagina kunnen alle spelers en hun fysieke scores worden geraadpleegd, met de mogelijkheid om via filters een selectie van spelers te maken. Daarnaast is er uitleg beschikbaar over de berekening van de scores, evenals een overzicht van de belangrijkste fysieke factoren per positie die bijdragen aan deze scores.
+Als laatste stap worden alle spelers en hun scores gevisualiseerd op een extra pagina binnen het bestaande dashboard. Op deze pagina kunnen de spelers en hun fysieke scores worden geraadpleegd, met de mogelijkheid om via filters een selectie van spelers te maken. Daarnaast is er uitleg beschikbaar over de berekening van de scores, evenals een overzicht van de belangrijkste fysieke factoren per positie die bijdragen aan deze scores.
