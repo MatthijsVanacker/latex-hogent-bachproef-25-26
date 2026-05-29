@@ -103,7 +103,7 @@ Bij het samenbrengen (\emph{mergen}) van beide datasets worden op basis van het 
 
 Tijdens de feature engineering-fase wordt alle kwantitatieve data omgezet naar relatieve waarden per 90 minuten. De kwalitatieve variabele \emph{psv99} wordt onveranderd behouden. Vervolgens worden alle features genormaliseerd met behulp van \emph{StandardScaler}, zodat ze op een vergelijkbare schaal liggen (gemiddelde van 0 en standaardafwijking van 1).
 
-\subsection{Normalisatie per competite en positie}
+\subsection{Normalisatie per competitie en positie}
 Deze schaalverandering wordt uitgevoerd per positie en per competitie. Het afzonderlijk schalen per positie is noodzakelijk omdat verschillende posities inherent andere fysieke eisen hebben; bijvoorbeeld middenvelders leggen doorgaans meer afstand af dan verdedigers, zonder dat dit noodzakelijk een verschil in fysieke kwaliteit impliceert. Door per positie te normaliseren worden deze structurele verschillen geneutraliseerd.
 
 Daarnaast wordt ook per competitie geschaald, aangezien speelstijlen sterk kunnen verschillen tussen competities. Zo staat La Liga traditioneel bekend om meer positiespel en balbezitgericht voetbal, terwijl de Premier League doorgaans een hoger tempo en meer fysieke intensiteit kent. Door deze verschillen te corrigeren, worden competitiegebonden speelstijlverschillen geneutraliseerd, waardoor spelers beter vergelijkbaar worden over competities heen.
@@ -126,7 +126,7 @@ In deze fase worden alle modellen getraind, geëvalueerd en vergeleken. De hyper
 \subsection{Individuele dataset}
 \subsubsection{PCA}
 
-De eerste methode die in dit onderzoek wordt toegepast is een unsupervised learning-techniek, namelijk PCA (\emph{Principal Component Analysis} of \emph{Hoofcomponentenanalyse}). Deze methode reduceert de dimensionaliteit van een dataset door onderliggende verbanden tussen variabelen te identificeren en nieuwe componenten te construeren die lineaire combinaties zijn van de oorspronkelijke variabelen.
+De eerste methode die in dit onderzoek wordt toegepast is een unsupervised learning-techniek, namelijk PCA (\emph{Principal Component Analysis} of \emph{Hoofdcomponentenanalyse}). Deze methode reduceert de dimensionaliteit van een dataset door onderliggende verbanden tussen variabelen te identificeren en nieuwe componenten te construeren die lineaire combinaties zijn van de oorspronkelijke variabelen.
 
 De eerste hoofdcomponent verklaart ongeveer 46\% van de variantie in de data. Dit is een relatief hoog aandeel voor één component, waardoor het mogelijk is om op basis hiervan een fysieke score te construeren.
 
@@ -144,9 +144,9 @@ Over het algemeen blijkt dat een regressiemodel minder geschikt is voor deze dat
 
 Een andere aanpak die wordt gehanteerd op de individuele dataset is classificatie, waarbij het doel is om het wedstrijdresultaat (W, D of L) te voorspellen.
 
-Hiervoor worden twee modellen getest: \emph{logistic regression} en \emph{XGBoost-classifier}. Beide modellen behalen een nauwkeurigheid van ongeveer 40\%. Dit is beter dan gokken maar nog altijd geen uitstekend resultaat is.
+Hiervoor worden twee modellen getest: \emph{logistic regression} en \emph{XGBoost-classifier}. Beide modellen behalen een nauwkeurigheid van ongeveer 40\%. Dit is beter dan gokken maar nog altijd geen uitstekend resultaat.
 
-\subsubsection{Conclusie individueel}
+\subsubsection{Besluit individuele dataset}
 
 De individuele modellen tonen geen tevredenstellende resultaten. Dit is grotendeels verklaarbaar door twee redenen:
 \begin{enumerate}
@@ -159,9 +159,9 @@ De individuele modellen tonen geen tevredenstellende resultaten. Dit is grotende
 
 Bij de geaggregeerde dataset ligt de focus op classificatiemodellen, met als doelwit wederom het wedstrijdresultaat. Hier wordt gekozen voor twee modellen, \emph{XGBoost-classifier} en \emph{LightGBM}, beide zogenaamde GBDTs (Gradient Boosting Decision Trees).
 
-De resultaten zijn hier beter dan bij de individuele dataset met een nauwkeurigheid van 44\%. Dit is een verbetering van 10\% ten opzichte van de classificatie van de individuele dataset.
+De resultaten zijn hier beter dan bij de individuele dataset met een nauwkeurigheid van 44\%. Dit is een verbetering van 4\% ten opzichte van de classificatie van de individuele dataset.
 
-\subsubsection{Conclusie geaggregeerd}
+\subsubsection{Besluit geaggregeerde dataset}
 
 De geaggregeerde dataset geeft betere resultaten dan de individuele dataset, maar een belangrijke factor werd nog niet besproken: een wedstrijd wordt gespeeld tussen twee teams.
 Om deze reden focust de volgende dataset zich daar op. 
@@ -183,11 +183,11 @@ Bij een diepere inkijk in de voorspelling is het zichtbaar dat de waarden vaak r
 
 \subsubsection{Classificatiemodellen}
 
-Een classificatiemodel is eveneens toegepast op de verschil-dataset. Hier is wederom gekozen voor \emph{XGBoost-classifier} met als doelwit de wedstrijdresultaten.
+Een classificatiemodel wordt eveneens toegepast op de verschil-dataset. Hier is wederom gekozen voor \emph{XGBoost-classifier} met als doelwit de wedstrijdresultaten.
 
 Het laatste model dat getraind wordt, geeft een nauwkeurigheid van 36\%. Dit model presteert het slechtst van alle getrainde classificatiemodellen.
 
-\subsubsection{Conclusie verschil} 
+\subsubsection{Besluit verschil-dataset} 
 
 De modellen getraind op de verschil-dataset geven de slechtste resultaten van alle getrainde modellen. Vier mogelijke redenen hiervoor zijn:
 \begin{enumerate}
@@ -204,7 +204,7 @@ Na het trainen en evalueren van alle modellen is gekozen voor \emph{XGBoost-clas
  waarbij \( w_{i,p} \) het gewicht van een factor van speler \( i \) binnen positie \(p\) is en de noemer de som van alle gewichten binnen dezelfde positie.
 
  Met deze gewichten wordt dan per wedstrijd een score berekend door ze te vermenigvuldigen met de genormaliseerde overeenkomende fysieke waarden (afhankelijk van de gespeelde positie in die wedstrijd). Hierna wordt een gewogen gemiddelde berekend, gebaseerd op het aantal gespeelde minuten in de wedstrijd, van iedere speler per competitie en seizoen.
- Zo krijgt iedere speler die voldoet aan de voorwaarden (bijvoorbeeld een minumun aantal wedstrijden) een score over een competitie en seizoen heen. Deze scores worden dan omgezet naar een waarde tussen 0 en 100 waar de hoogste score een 100 wordt en de laagste een 0.
+ Zo krijgt iedere speler die voldoet aan de voorwaarden (bijvoorbeeld een minimum aantal wedstrijden) een score over een competitie en seizoen heen. Deze scores worden dan omgezet naar een waarde tussen 0 en 100 waar de hoogste score een 100 wordt en de laagste een 0.
 
 \section{Implementatie in dashboard}
 
