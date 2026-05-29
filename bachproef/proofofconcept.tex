@@ -3,19 +3,221 @@
 
 \section{Inleiding}
 
+In dit hoofdstuk worden alle fasen van de methodologie uitgebreid besproken, van het verzamelen van de data tot de implementatie van de visualisatie van de spelersscore in het dashboard.
+
 \section{Dataverzameling}
 
-\section{Data voorbereiding}
+De eerste fase bestaat uit het ophalen van data via de SkillCorner API-endpoints. Hieruit verkrijgen we alle informatie die nodig is voor het trainen van het machine learning-model. We halen hiervoor twee datasets op: enerzijds de fysieke spelersstatistieken per speler per wedstrijd uit 25 competities sinds 2023, en anderzijds de wedstrijdresultaten.
+\subsection{Spelersdata}
+
+De fysieke data wordt in de oude pipeline reeds opgehaald uit de SkillCorner dataset in de vorm van een JSON-bestand, hier vervangt een functie nog enkele \emph{NaN}-waarden naar \emph{null} voor een succesvolle dataophaling, en ziet er alsvolgt uit:
+\begin{longtable}{ c | p{10cm} }
+\caption{Beschrijving van spelersdata} \\
+\hline
+\textbf{Kolom} & \textbf{Beschrijving} \\
+\hline
+
+Player\_name & Volledige naam van de speler \\
+Player\_short\_name & Verkorte of gebruikte naam van de speler \\
+Player\_id & Unieke identifier van de speler \\
+Player\_birthdate & Geboortedatum van de speler \\
+
+Team\_name & Naam van het team \\
+Team\_id & Unieke identifier van het team \\
+
+Match\_name & Naam van de wedstrijd \\
+Match\_id & Unieke identifier van de wedstrijd \\
+Match\_date & Datum van de wedstrijd \\
+
+Competition\_name & Naam van de competitie \\
+Competition\_id & Unieke identifier van de competitie \\
+Season\_name & Naam van het seizoen \\
+Season\_id & Unieke identifier van het seizoen \\
+Competition\_edition\_id & Identificatie van de competitie-editie \\
+
+Position & Speelpositie van de speler \\
+Position\_group & Gegroepeerde positie (bv. centrale verdediger, flankspeler\dots) \\
+
+Minutes\_full\_all & Gespeelde minuten in de wedstrijd \\
+Physical\_check\_passed & Indicator of fysieke data geldig is \\
+
+Total\_distance\_full\_all & Totale afgelegde afstand \\
+Total\_metersperminute\_full\_all & Afgelegde meters per minuut \\
+Running\_distance\_full\_all & Totale afgelegde afstand al lopend \\
+Hsr\_distance\_full\_all & Totale afgelegde afstand aan hoge snelheid \\
+Hsr\_count\_full\_all & Aantal keer gelopen aan hoge snelheid \\
+Sprint\_distance\_full\_all & Sprintafstand \\
+Sprint\_count\_full\_all & Aantal sprints \\
+Hi\_distance\_full\_all & Totale afgelegde afstand aan hoge intensiteit \\
+Hi\_count\_full\_all & Aantal  acties aan hoge intensiteit \\
+
+Psv99 & Snelste reproduceerbare snelheid behaald \\
+
+Medaccel\_count\_full\_all & Aantal middelmatige acceleraties \\
+Highaccel\_count\_full\_all & Aantal hoge acceleraties \\
+Meddecel\_count\_full\_all & Aantal middelmatige deceleraties \\
+Highdecel\_count\_full\_all & Aantal hoge deceleraties \\
+
+Explacceltohsr\_count\_full\_all & Aantal explosieve acceleraties naar high-speed running \\
+Timetohsr & Tijd tot high-speed running \\
+Timetohsrpostcod & Tijd tot high-speed running na richtingsverandering \\
+
+Explacceltosprint\_count\_full\_all & Aantal explosieve acceleraties naar sprint \\
+Timetosprint & Tijd tot sprint \\
+Timetosprintpostcod & Tijd tot sprint na richtingsverandering \\
+
+Cod\_count\_full\_all & Aantal \emph{changes of direction} (richtingsveranderingen) \\
+Timeto505around90 & Tijd voor 5-0-5-test (90° variant) \\
+Timeto505around180 & Tijd voor 5-0-5-test (180° variant) \\
+
+\hline
+\end{longtable}
+
+\subsection{Wedstrijddata}
+
+De wedstrijddata wordt nog niet opgehaald, hiervoor dient het \emph{match}-endpoint van SkillCorner. Hieruit halen we onderstaande data van de wedstrijden in de vorm van een JSON-bestand:
+\begin{longtable}{ c | p{10cm} }
+\caption{Beschrijving van wedstrijddata} \\
+\hline
+\textbf{Kolom} & \textbf{Beschrijving} \\
+\hline
+
+Match\_id & Unieke identifier van de wedstrijd \\
+Home\_team\_id & Unieke identifier van de thuisploeg \\
+Home\_team & Naam van de thuisploeg \\
+Away\_team\_id & Unieke identifier van de uitploeg \\
+Away\_team & Naam van de uitploeg \\
+Home\_goals & Aantal doelpunten gescoord door de thuisploeg \\
+Away\_goals & Aantal doelpunten gescoord door de uitploeg \\
+
+\hline
+\end{longtable}
+
+\section{Data schoonmaken}
+
+Na het ophalen van de data volgt de fase van datacleaning. Hierbij worden acht kolommen verwijderd: twee kolommen (total\_metersperminute\_full\_all en physical\_check\_passed) vanwege overbodigheid en zes kolommen (Timetohsr, Timetohsrpostcod, Timetosprint, Timetosprintpostcod, Timeto505around90, Timeto505around180) vanwege een groot aantal ontbrekende waarden. Daarnaast worden alle spelers die minder dan 75 minuten in de wedstrijd speelden ook verwijderd, evenals alle spelers die hebben deelgenomen aan wedstrijd waarvoor geen wedstrijddata beschikbaar is.
 
 \section{Feature engineering}
 
-\section{Model training}
+Bij het samenbrengen (\emph{mergen}) van beide datasets worden op basis van het team van de speler en de wedstrijd twee nieuwe kolommen gecreëerd: het matchresultaat (W, D of L) en het doelpuntenverschil (gescoorde doelpunten minus tegendoelpunten).
 
-\section{Model evaluatie en vergelijking}
+Tijdens de feature engineering-fase wordt alle kwantitatieve data omgezet naar relatieve waarden per 90 minuten. De kwalitatieve variabele \emph{psv99} wordt onveranderd behouden. Vervolgens worden alle features genormaliseerd met behulp van \emph{StandardScaler}, zodat ze op een vergelijkbare schaal liggen (gemiddelde van 0 en standaardafwijking van 1).
+
+\subsection{Normalisatie per competite en positie}
+Deze schaalverandering wordt uitgevoerd per positie en per competitie. Het afzonderlijk schalen per positie is noodzakelijk omdat verschillende posities inherent andere fysieke eisen hebben; bijvoorbeeld middenvelders leggen doorgaans meer afstand af dan verdedigers, zonder dat dit noodzakelijk een verschil in fysieke kwaliteit impliceert. Door per positie te normaliseren worden deze structurele verschillen geneutraliseerd.
+
+Daarnaast wordt ook per competitie geschaald, aangezien speelstijlen sterk kunnen verschillen tussen competities. Zo staat La Liga traditioneel bekend om meer positiespel en balbezitgericht voetbal, terwijl de Premier League doorgaans een hoger tempo en meer fysieke intensiteit kent. Door deze verschillen te corrigeren, worden competitiegebonden speelstijlverschillen geneutraliseerd, waardoor spelers beter vergelijkbaar worden over competities heen.
+
+\subsection{Verschillende datasets}
+
+Er worden daarnaast verschillende datasets gecreëerd om het model op verschillende manieren te kunnen trainen:
+
+\begin{itemize}
+\item De individuele dataset: elke speler wordt beschreven door zijn genormaliseerde fysieke statistieken, met het wedstrijdresultaat als targetvariabele.
+\item De geaggregeerde dataset: per team wordt het gemiddelde berekend van elke fysieke statistiek, per positie.
+\item De dataset met beide ploegen: de geaggregeerde datasets van beide teams die tegen elkaar speelden worden samengevoegd.
+\item De verschil-dataset: uit de dataset met beide ploegen worden de verschillen tussen de overeenkomstige features van beide teams berekend.
+\end{itemize}
+
+\section{Model training en evaluatie}
+
+In deze fase worden alle modellen getraind, geëvalueerd en vergeleken. De hyperparameters van alle modellen die beter presteren dan voorgaande modellen worden geoptimaliseerd.
+
+\subsection{Individuele dataset}
+\subsubsection{PCA}
+
+De eerste methode die in dit onderzoek wordt toegepast is een unsupervised learning-techniek, namelijk PCA (\emph{Principal Component Analysis} of \emph{Hoofcomponentenanalyse}). Deze methode reduceert de dimensionaliteit van een dataset door onderliggende verbanden tussen variabelen te identificeren en nieuwe componenten te construeren die lineaire combinaties zijn van de oorspronkelijke variabelen.
+
+De eerste hoofdcomponent verklaart ongeveer 46\% van de variantie in de data. Dit is een relatief hoog aandeel voor één component, waardoor het mogelijk is om op basis hiervan een fysieke score te construeren.
+
+Deze aanpak houdt echter geen rekening met het matchresultaat, aangezien PCA volledig unsupervised is. In de context van deze bachelorproef, waar het voorspellen en verklaren van wedstrijdresultaten centraal staat, blijkt deze methode daarom minder geschikt.
+
+\subsubsection{Regressiemodellen}
+
+Naast PCA wordt ook een regressie-aanpak getest op de individuele dataset, waarbij het doel is om het doelpuntenverschil van een wedstrijd te voorspellen.
+
+Hiervoor wordt XGBoost-regressie gehanteerd. De prestatie van dit model is echter beperkt. De \emph{XGBoost-regressor} behaalt een \emph{RMSE} van ongeveer 1,65, wat wijst op een relatief grote foutmarge in de voorspellingen. Dit blijkt ook uit het feit dat de standaardafwijking van het doelpuntensaldo slechts 1,76 is.
+
+Over het algemeen blijkt dat een regressiemodel minder geschikt is voor deze dataset.
+
+\subsubsection{Classificatiemodellen}
+
+Een andere aanpak die wordt gehanteerd op de individuele dataset is classificatie, waarbij het doel is om het wedstrijdresultaat (W, D of L) te voorspellen.
+
+Hiervoor worden twee modellen getest: \emph{logistic regression} en \emph{XGBoost-classifier}. Beide modellen behalen een nauwkeurigheid van ongeveer 40\%. Dit is beter dan gokken maar nog altijd geen uitstekend resultaat is.
+
+\subsubsection{Conclusie individueel}
+
+De individuele modellen tonen geen tevredenstellende resultaten. Dit is grotendeels verklaarbaar door twee redenen:
+\begin{enumerate}
+\item Wanneer enkel naar fysieke prestaties wordt gekeken, is het voorspellen van een matchresultaat moeilijk, aangezien een wedstrijdresultaat van meerdere factoren afhankelijk is.
+\item Voetbal is een teamsport; een matchresultaat voorspellen op basis van de prestaties van een individu baseert zich slechts op een klein deel van het geheel.
+\end{enumerate}
+
+\subsection{Geaggregeerde dataset}
+\subsubsection{Classificatiemodellen}
+
+Bij de geaggregeerde dataset ligt de focus op classificatiemodellen, met als doelwit wederom het wedstrijdresultaat. Hier wordt gekozen voor twee modellen, \emph{XGBoost-classifier} en \emph{LightGBM}, beide zogenaamde GBDTs (Gradient Boosting Decision Trees).
+
+De resultaten zijn hier beter dan bij de individuele dataset met een nauwkeurigheid van 44\%. Dit is een verbetering van 10\% ten opzichte van de classificatie van de individuele dataset.
+
+\subsubsection{Conclusie geaggregeerd}
+
+De geaggregeerde dataset geeft betere resultaten dan de individuele dataset, maar een belangrijke factor werd nog niet besproken: een wedstrijd wordt gespeeld tussen twee teams.
+Om deze reden focust de volgende dataset zich daar op. 
+
+\subsection{Verschil-dataset}
+\subsubsection{Regressiemodellen}
+
+Op de verschil-dataset worden de regressiemodellen \emph{RidgeCV}, \emph{LassoCV} en \emph{XGBoost-regressor} getraind.
+
+De resultaten van de regressiemodellen zijn echter slechter dan die van de individuele dataset, waarbij alle modellen een \emph{RMSE} van ongeveer 1,8 behalen. Deze \emph{RMSE} is zelfs slechter dan de standaardafwijking van het doelpuntenverschil en dus geen geschikte methode voor deze voorspellingstaak.
+
+Er zijn eveneens regressiemodellen getraind op het aantal gescoorde en tegendoelpunten met even weinig succes.
+
+\subsubsection{Hybride methode}
+
+De zwakke resultaten van de regressiemodellen zijn opvallend. Daarom wordt onderzocht of de voorspellingen alsnog bruikbaar zijn voor classificatiedoeleinden.
+
+Bij een diepere inkijk in de voorspelling is het zichtbaar dat de waarden vaak rond de 0 liggen, met nooit waarden hoger dan 1 of lager dan -1. Om toch een verband te onderzoeken, worden de voorspelde waarden geïnterpreteerd als classificaties. Voorspellingen lager dan -0.05 worden beschouwd als een nederlaag (L), waarden hoger dan 0.05 als een overwinning (W) en waarden daartussen als een gelijkspel (D). De uitkomst van dit experiment valt echter ook tegen, met een accuraatheid van 39\%.
+
+\subsubsection{Classificatiemodellen}
+
+Een classificatiemodel is eveneens toegepast op de verschil-dataset. Hier is wederom gekozen voor \emph{XGBoost-classifier} met als doelwit de wedstrijdresultaten.
+
+Het laatste model dat getraind wordt, geeft een nauwkeurigheid van 36\%. Dit model presteert het slechtst van alle getrainde classificatiemodellen.
+
+\subsubsection{Conclusie verschil} 
+
+De modellen getraind op de verschil-dataset geven de slechtste resultaten van alle getrainde modellen. Vier mogelijke redenen hiervoor zijn:
+\begin{enumerate}
+    \item Het nemen van verschillen zorgt voor verlies van informatie, aangezien alle statistieken relatief worden ten opzichte van de tegenstander.
+    \item Voetbalresultaten zijn niet uitsluitend afhankelijk van fysieke verschillen. Factoren zoals tactiek en individuele kwaliteit hebben eveneens een grote invloed.
+    \item De structuur en identiteit van teams verdwijnen gedeeltelijk bij het berekenen van verschillen tussen beide ploegen.
+    \item Het nemen van verschillen kan extra ruis introduceren in de dataset.
+\end{enumerate} 
 
 \section{Constructie van de fysieke spelersscore}
 
+Na het trainen en evalueren van alle modellen is gekozen voor \emph{XGBoost-classifier}  toegepast op de geaggregeerde dataset. De SHAP \emph{TreeExplainer} verklaart de output van het model en haalt zo de \emph{feature contributions} van iedere feature op. Deze bijdragen worden gegroepeerd per positie en de procentuele aandeel ervan wordt binnen de positie wordt berekend met de formule:
+ \[\frac{w_{i,p}}{\sum_{j \in p} w_{j,p}}\]
+ waarbij \( w_{i,p} \) het gewicht van een factor van speler \( i \) binnen positie \(p\) is en de noemer de som van alle gewichten binnen dezelfde positie.
+
+ Met deze gewichten wordt dan per wedstrijd een score berekend door ze te vermenigvuldigen met de genormaliseerde overeenkomende fysieke waarden (afhankelijk van de gespeelde positie in die wedstrijd). Hierna wordt een gewogen gemiddelde berekend, gebaseerd op het aantal gespeelde minuten in de wedstrijd, van iedere speler per competitie en seizoen.
+ Zo krijgt iedere speler die voldoet aan de voorwaarden (bijvoorbeeld een minumun aantal wedstrijden) een score over een competitie en seizoen heen. Deze scores worden dan omgezet naar een waarde tussen 0 en 100 waar de hoogste score een 100 wordt en de laagste een 0.
+
 \section{Implementatie in dashboard}
 
-\section{Conclusie}
- 
+De laatste fase van het onderzoek is de visualisatie van de fysieke spelerscores in het bestaande dashboard. Het dashboard maakt gebruik van Streamlit om alle data te visualiseren. Om deze data efficiënt te verwerken en niet telkens de modellen te moeten hertrainen worden de spelers met alle scores en andere info opgeslagen in een CSV-bestand en worden de gewichten per positie opgeslagen in een pkl-bestand.
+Deze bestanden worden ingeladen in de nieuwe pagina op het dashboard, dat bestaat uit twee delen, het eerste deel toont de spelers en hun scores en geeft de gebruiker de mogelijkheid om te filteren op naam, leeftijd, team, seizoen, competitie en positie.
+\begin{figure}[H]
+\caption{Dashboard spelersfilter}
+\centering
+\includegraphics[width=\textwidth]{dashboard_bovenkant.png}
+\end{figure}
+Het andere deel van de pagina bestaat uit uitleg over het berekenen van de score alsook toont het een overzicht van de gewichten per positie.
+\begin{figure}[H]
+\caption{Dashboard uitleg rond score}
+\centering
+\includegraphics[width=\textwidth]{dashboard_bodem.png}
+\end{figure}
