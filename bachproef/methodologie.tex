@@ -11,42 +11,42 @@ Het doel van deze bachelorproef is het ontwikkelen van een interpreteerbare en r
 
 Er wordt gekozen voor een hybride aanpak waarbij supervised learning gecombineerd wordt met model-interpretatietechnieken. Daarnaast bekijkt het onderzoek naar het belang van de fysieke prestatie-indicatoren per positiegroep, zo worden de fysieke rolvereisten per positie berekend.
 
-\section{Dataset}
 
-De spelersdataset bestaat uit wedstrijdgerelateerde fysieke prestatie-indicatoren per speler per wedstrijd, opgehaald uit de Skillcorner data. Alle variabelen worden genormaliseerd per 90 minuten om onderlinge vergelijkbaarheid te garanderen.
 
-De andere dataset bestaat uit wedstrijdresultaten, waar per wedstrijd het aantal doelpunten voor de thuis- en uitploeg te vinden is.
+\section{Data verzamelen}
 
-Het onderzoek neemt ook contextvariabelen zoals speelminuten mee voor normalisatiecontrole.
+Het verzamelen van de data maakt gebruik van de dataverzamelingsmethoden van KAA Gent. De spelersdataset bestaat uit wedstrijdgerelateerde fysieke prestatie-indicatoren per speler per wedstrijd en het aantal doelpunten voor de thuis- en uitploeg in deze wedstrijden, opgehaald uit de Skillcorner data. 
 
-\section{Positie-specifieke modellering}
+\section{Data voorbereiding}
 
-Aangezien fysieke vereisten sterk verschillen per speelpositie, wordt de dataset opgesplitst per positie (bijvoorbeeld centrale verdedigers, flankverdedigers, centrale middenvelders en flankaanvallers). Voor elke positie wordt een afzonderlijk machine learning-model getraind.
+De opgehaalde data bevat nog te veel overbodigheden: 
+\begin{itemize}
+    \item irrelevante features (bijvoorbeeld de \emph{afgelegde afstand} in de wedstrijd en \emph{minuten} in de wedstrijd maken \emph{afgelegde afstand per minuut} irrelevant)
+    \item features met te weinig data (bijvoorbeeld een feature waar er slechts bij 30\% van de spelers een ingevulde waarde is)
+    \item spelers die te weinig minuten in wedstrijden speelden (bijvoorbeeld een speler die slechts 5 minuten speelde gaat een vertekend beeld geven per 90 minuten)
+\end{itemize}
+In deze stap worden deze redundante gegevens uit de data verwijderd om met een propere dataset naar de volgende stap te kunnen gaan.
 
-Deze aanpak zorgt ervoor dat spelers uitsluitend worden vergeleken met positiegenoten, wat structurele bias in de scoreberekening voorkomt.
+\section{Feature engineering}
 
-\section{Supervised learning}
+De kwantitatieve features worden genormaliseerd per 90 minuten om onderlinge vergelijkbaarheid te garanderen. Daarna wordt de data verder gestandardiseerd per positie (bijvoorbeeld centrale verdedigers, flankverdedigers, centrale middenvelders en flankaanvallers) en competitie, zodat verschillen in fysieke vereisten en spelcontext tussen posities en competities in rekening worden gebracht.
 
-Voor elke positie wordt een classificatiemodel ontwikkeld met als doelvariabele een proxy voor fysieke waarde binnen de ploeg. Als proxy wordt gekozen voor aantal speelminuten in volgende wedstrijd.
+Vervolgens wordt de data per ploeg en per wedstrijd geaggregeerd op basis van het gemiddelde per positie, zodat elke rij overeenkomt met het resultaat van één wedstrijd. Op die manier is de dataset klaar om gebruikt te worden voor het trainen van het machine learning-model.
 
-Er wordt gebruikgemaakt van een gradient boosting model (bijvoorbeeld XGBoost) om niet-lineaire relaties tussen fysieke variabelen en de doelvariabele te kunnen modelleren.
+\section{Model training}
 
-De dataset wordt opgesplitst in trainings- en testdata, waarbij cross-validatie wordt toegepast om overfitting te vermijden. Modelperformantie wordt geëvalueerd aan de hand van geschikte metrics, zoals accuracy, F1-score of RMSE, afhankelijk van het type doelvariabele.
+Er werden verschillende modellen en methoden getest, die verder worden besproken in hoofdstuk \ref{ch:proof-of-concept}. Deze omvatten regressie-, classificatie- en hybride modellen, telkens met verschillende vormen van inputdata. Het resultaat is een reeks modellen, waarvan het best presterende model wordt geselecteerd voor de berekening van de fysieke score.
 
-\section{Modelinterpretatie via SHAP}
+\section{Model evaluatie en vergelijking}
 
-Om het relatieve belang van individuele fysieke variabelen te bepalen, wordt gebruikgemaakt van SHAP (SHapley Additive exPlanations). SHAP-waarden kwantificeren de bijdrage van elke feature aan de voorspelling van het model.
-
-Voor elke speler wordt de gemiddelde absolute SHAP-waarde per feature berekend over meerdere wedstrijden. Deze waarden representeren de effectieve impact van fysieke prestaties op de modeloutput.
+De classificatiemodellen worden geëvalueerd op basis van accuraatheid en de F1-score, terwijl de regressiemodellen worden beoordeeld aan de hand van de RMSE (\emph{Root Mean Squared Error}).
 
 \section{Constructie van de fysieke spelersscore}
 
-De fysieke spelersscore wordt geconstrueerd op basis van de geaggregeerde SHAP-waarden. Concreet wordt per speler:
+De essentie van dit onderzoek is het construeren van een fysieke spelersscore. Om het relatieve belang van individuele fysieke variabelen te bepalen, wordt gebruikgemaakt van SHAP (SHapley Additive exPlanations). SHAP-waarden kwantificeren de bijdrage van elke feature aan de voorspelling van het model. Deze bijdragen (of gewichten) worden vervolgens gegroepeerd per positie en omgerekend naar een procentuele bijdrage.
 
-\begin{enumerate}
-    \item De score berekend per wedstrijd op basis van de gespeelde positie.
-    \item Een gewogen gemiddelde berekend voor alle wedstrijden van de speler in een bepaalde competitie in een bepaald seizoen.
-    \item Geschaald naar een interpreteerbare score tussen 0 en 100.
-\end{enumerate}
+Vervolgens wordt voor elke speler en elke wedstrijd waarin hij minstens een bepaald aantal minuten speelde een score berekend op basis van deze gewichten. Daarna wordt per speler een gewogen gemiddelde berekend over alle wedstrijden binnen dezelfde competitie en hetzelfde seizoen. Ten slotte worden deze scores geschaald naar een interpreteerbare waarde tussen 0 en 100, wat resulteert in de uiteindelijke fysieke score.
 
-De resulterende score weerspiegelt de relatieve fysieke bijdrage van een speler, op een reproduceerbare en data-gedreven manier.
+\section{Implementatie in dashboard}
+
+Als laatste stap worden alle spelers en hun scores gevisualiseerd op een extra pagina binnen het bestaande dashboard. Op deze pagina kunnen alle spelers en hun fysieke scores worden geraadpleegd, met de mogelijkheid om via filters een selectie van spelers te maken. Daarnaast is er uitleg beschikbaar over de berekening van de scores, evenals een overzicht van de belangrijkste fysieke factoren per positie die bijdragen aan deze scores.
