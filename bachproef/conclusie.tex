@@ -13,6 +13,25 @@
 % niet duidelijk zijn?
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
+\section{Hoofdonderzoeksvraag}
 
-\lipsum[76-80]
+De hoofdonderzoeksvraag "Hoe kan een objectieve en reproduceerbare fysieke spelersscore ontwikkeld worden op basis van wedstrijddata met behulp van machine learning-technieken?", kan als volgt beantwoord worden. Het is mogelijk om een objectieve en reproduceerbare fysieke spelersscore te ontwikkelen op basis van machine learning-technieken. De score wordt berekend op basis van SHAP-waarden afkomstig uit een XGBoost-classificatiemodel, waardoor de bijdrage van iedere feature op een interpreteerbare manier wordt berekend. De voorspellende prestaties van de onderzochte modellen blijven echter beperkt. Het best presterende model, \emph{XGBoost-classifier} op de geaggregeerde dataset, behaalde een nauwkeurigheid van 44\%. Dit ligt hoger dan de willekeurige baseline van 33\% in een drieklassenprobleem, maar blijft te laag om te kunnen spreken van een sterk voorspellend model. Dit verhoogd percentage toont echter wel aan dat er een, al dan niet licht, verband is tussen de fysieke prestaties van een team en de wedstrijduitslag.
+
+Hieruit kan worden besloten dat louter fysieke prestatiegegevens slechts een beperkte voorspellende waarde hebben voor het bepalen van wedstrijdresultaten. De belangrijkste bijdrage van dit onderzoek ligt dan niet in het optimaliseren van de modellen, maar in het maken van een interpreteerbare en reproduceerbare fysieke spelersscore.
+
+\section{Meerwaarde aan de doelgroep}
+
+Deze studie draagt bij aan het onderzoeksdomein van data-analyse in de sport door het onderzoek naar het belang van fysieke prestaties, gebruikmakend van machine learning-technieken, bij het behalen van wedstrijdresultaten.
+
+Het biedt een reproduceerbare en objectieve manier om spelers fysiek te evalueren op basis van fysieke wedstrijddata. Hierdoor kunnen data-analisten en scouts deze aanpak gebruiken als extra ondersteuning naar het zoeken van spelers met interessante fysieke profielen.
+
+\section{Toekomstig onderzoek}
+
+Tijdens dit onderzoek zijn er veel mogelijkheden voor alternatief onderzoek naar voren gekomen, waarvan de volgende vier centraal staan:
+\begin{itemize}
+    \item Wat is het belang van de \emph{peak-metrics}, zoals de maximale sprintsnelheid, tijd tot sprinten, aantal explosieve versnellingen\dots
+    \item Eerder onderzoek toont aan dat een clusteringmodel \emph{spelerstypes} kan vinden, maar kunnen er \emph{elite} spelers gevonden worden in deze \emph{spelerstypes}?
+    \item Voortbouwende op het voorgaande, wat is het effect van meerdere \emph{elite} spelers hebben in een wedstrijd?
+    \item Wat is het effect wanneer alle wedstrijdstatistieken (inclusief niet-fysieke variabelen) worden meegenomen in het machine learning-model? Wat is dan de bijdrage van de fysieke statistieken?
+\end{itemize}
 
