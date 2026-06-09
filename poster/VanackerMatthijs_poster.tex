@@ -30,22 +30,19 @@
 \maketitle
 
 \begin{abstract}
-Abstract
+De hoeveelheid data die beschikbaar is in de moderne voetbalwereld blijft groeien. Voetbalclubs zoeken voortdurend naar manieren om deze data toe te passen en zo vooruitgang te boeken in alle delen van de club, van de eerste ploeg tot de jeugdacademie. Een sector waar de groeiende hoeveelheid data een grote impact heeft, is het scoutingsdepartement. 
+In dit onderzoek wordt gebruikgemaakt van machine learning-technieken om belangrijke fysieke spelersattributen te identificeren en deze inzichten te gebruiken om spelers een fysieke score toe te kennen. Deze manier biedt scouts en data-analisten een alternatief voor de huidige berekening van de fysieke score van spelers, gebruikmakend van een experteninschatting van het belang van fysieke attributen. 
+De centrale onderzoeksvraag van dit onderzoek luidt: \emph{Hoe kan een objectieve en reproduceerbare fysieke spelersscore ontwikkeld worden op basis van fysieke wedstrijddata met behulp van machine learning-technieken?} 
+Om dit te onderzoeken worden fysieke wedstrijddata gekoppeld aan wedstrijdresultaten over 25 competities, verkregen via de SkillCorner API. Na de data op te schonen, feature engineering toe te passen en te normaliseren per positiegroep en competitie worden regressie- en classificatiemodellen getest op drie verschillende datasets: een \emph{individuele}, een \emph{geaggregeerde} en een \emph{verschil}-dataset. Het best presterende model is een XGBoost-classificatiemodel getraind op de geaggregeerde dataset met een nauwkeurigheid van 44\%. Uit dit model worden de belangrijkste fysieke attributen geïdentificeerd via SHAP-waarden, deze worden vervolgens gebruikt om voor elke speler, per competitie en per seizoen, een fysieke score te berekenen tussen 0 en 100. Om een overzicht te krijgen van de spelers en hun score wordt deze score gevisualiseerd via een extra pagina binnen het bestaande fysieke scoutingsdashboard van de club.
+De resultaten van dit onderzoek tonen aan dat fysieke wedstrijddata alleen slechts een beperkte voorspellende waarde heeft voor wedstrijdresultaten. Desondanks is er aangetoond dat het mogelijk is een objectieve en reproduceerbare fysieke spelersscore te creëren op basis van machine learning-technieken. 
+
 \end{abstract}
 
 \begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
 
 \section{Introductie}
 
-Be quiet! Found them? In Mercia?! The coconut's tropical! But you are dressed as one… Well, what do you want? Knights of Ni, we are but simple travelers who seek the enchanter who lives beyond these woods.
 
-Well, what do you want? It's only a model. Camelot! We found them. We shall say `Ni' again to you, if you do not appease us.
-
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
-
-You can't expect to wield supreme power just `cause some watery tart threw a sword at you! Well, we did do the nose. I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
 
 \section{Experimenten}
 
