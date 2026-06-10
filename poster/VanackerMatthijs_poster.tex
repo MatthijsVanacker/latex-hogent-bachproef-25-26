@@ -17,7 +17,7 @@
 \author{Vanacker Matthijs}
 \email{matthijs.vanacker@student.hogent.be}
 \supervisor{Dhr. T. Antjon}
-\cosupervisor{Dhr. A. Martiny}
+\cosupervisor{Dhr. A. Martiny (KAA Gent)}
 
 % Indien ingevuld, wordt deze informatie toegevoegd aan het einde van de
 % abstract. Zet in commentaar als je dit niet wilt.
@@ -31,9 +31,9 @@
 
 \begin{abstract}
 De hoeveelheid data die beschikbaar is in de moderne voetbalwereld blijft groeien. Voetbalclubs zoeken voortdurend naar manieren om deze data toe te passen en zo vooruitgang te boeken in alle delen van de club, van de eerste ploeg tot de jeugdacademie. Een sector waar de groeiende hoeveelheid data een grote impact heeft, is het scoutingsdepartement. 
-In dit onderzoek wordt gebruikgemaakt van machine learning-technieken om belangrijke fysieke spelersattributen te identificeren en deze inzichten te gebruiken om spelers een fysieke score toe te kennen. Deze manier biedt scouts en data-analisten een alternatief voor de huidige berekening van de fysieke score van spelers, gebruikmakend van een experteninschatting van het belang van fysieke attributen. 
+In dit onderzoek wordt gebruikgemaakt van machine learning-technieken om belangrijke fysieke spelersattributen te identificeren en deze inzichten te gebruiken om spelers een fysieke score toe te kennen. Deze aanpak biedt scouts en data-analisten een alternatief voor de huidige berekening van de fysieke score van spelers, gebruikmakend van een experteninschatting van het belang van fysieke attributen. 
 De centrale onderzoeksvraag van dit onderzoek luidt: \emph{Hoe kan een objectieve en reproduceerbare fysieke spelersscore ontwikkeld worden op basis van fysieke wedstrijddata met behulp van machine learning-technieken?} 
-Om dit te onderzoeken worden fysieke wedstrijddata gekoppeld aan wedstrijdresultaten over 25 competities, verkregen via de SkillCorner API. Na de data op te schonen, feature engineering toe te passen en te normaliseren per positiegroep en competitie worden regressie- en classificatiemodellen getest op drie verschillende datasets: een \emph{individuele}, een \emph{geaggregeerde} en een \emph{verschil}-dataset. Het best presterende model is een XGBoost-classificatiemodel getraind op de geaggregeerde dataset met een nauwkeurigheid van 44\%. Uit dit model worden de belangrijkste fysieke attributen geïdentificeerd via SHAP-waarden, deze worden vervolgens gebruikt om voor elke speler, per competitie en per seizoen, een fysieke score te berekenen tussen 0 en 100. Om een overzicht te krijgen van de spelers en hun score wordt deze score gevisualiseerd via een extra pagina binnen het bestaande fysieke scoutingsdashboard van de club.
+Om dit te onderzoeken worden fysieke wedstrijddata gekoppeld aan wedstrijdresultaten over 25 competities, verkregen via de SkillCorner API. Na de data op te schonen, feature engineering toe te passen en te normaliseren per positiegroep en competitie worden regressie- en classificatiemodellen getest op drie datasets: een \emph{individuele}, een \emph{geaggregeerde} en een \emph{verschil}-dataset. Het best presterende model is een XGBoost-classificatiemodel getraind op de geaggregeerde dataset met een nauwkeurigheid van 44\%. Uit dit model worden de belangrijkste fysieke attributen geïdentificeerd via SHAP-waarden, deze worden vervolgens gebruikt om voor elke speler, per competitie en per seizoen, een fysieke score te berekenen tussen 0 en 100. Om een overzicht te krijgen van de spelers en hun score wordt deze score gevisualiseerd via een extra pagina binnen het bestaande fysieke scoutingsdashboard van de club.
 De resultaten van dit onderzoek tonen aan dat fysieke wedstrijddata alleen slechts een beperkte voorspellende waarde heeft voor wedstrijdresultaten. Desondanks is er aangetoond dat het mogelijk is een objectieve en reproduceerbare fysieke spelersscore te creëren op basis van machine learning-technieken. 
 
 \end{abstract}
@@ -42,39 +42,58 @@ De resultaten van dit onderzoek tonen aan dat fysieke wedstrijddata alleen slech
 
 \section{Introductie}
 
+De club krijgt zeer veel fysieke wedstrijddata binnen via SkillCorner, het exacte belang van iedere fysieke spelersstatistiek om een positief resultaat te behalen, is echter moeilijk te beoordelen. De huidige aanpak is gebaseerd op de inschatting van experten op de invloed van enkele cruciale fysieke attributen. Om optimaal gebruik te maken van al deze gegevens kan machine learning ingezet worden, zo'n algoritme kan al deze fysieke data analyseren en de belangrijkste attributen identificeren die bijdragen aan het behalen van een overwinning. 
+\newline \newline
+Hieruit volgt de \textbf{centrale onderzoeksvraag}:
+\newline \newline
+\emph{Hoe kan een objectieve en reproduceerbare fysieke spelersscore ontwikkeld worden op basis van fysieke wedstrijddata met behulp van machine learning-technieken?} 
 
+\section{Data en modeltraining}
+\subsection{Verschillende datasets}
+Alle kwantitatieve fysieke wedstrijddata wordt omgezet naar relatieve waarden per 90 minuten. De focus ligt op spelers die minstens 75 minuten gespeeld hebben in een wedstrijd, waarna de data wordt genormaliseerd per positiegroep en competitie. Er worden drie verschillende datasets gecreëerd:
+\begin{itemize}
+  \item \textbf{Individuele dataset}: Deze dataset bevat individuele fysieke wedstrijddata van spelers.
+  \item \textbf{Geaggregeerde dataset}: Deze dataset bevat geaggregeerde fysieke wedstrijddata van spelers per club en wedstrijd, gegroepeerd per positiegroep.
+  \item \textbf{Verschil-dataset}: Deze dataset bevat het verschil van geaggregeerde data van twee teams in een wedstrijd.
+\end{itemize}
+\subsection{Soorten modellen}
+\begin{itemize}
+  \item \textbf{Classificatiemodel}: Dit model voorspelt het resultaat van een wedstrijd gebaseerd op de prestaties van een team of speler.
+  \item \textbf{Regressiemodel}: Dit model voorspelt een getal, zoals het aantal gescoorde doelpunten, tegendoelpunten of het doelpuntenverschil van een wedstrijd.
+\begin{itemize}
+  \item \textbf{Hybride aanpak}: Binnen de regressiemodellen wordt ook een hybride aanpak gehanteerd, waarbij het voorspelde doelpuntenverschil vertaald wordt naar een voorspelling van het wedstrijdresultaat.
+\end{itemize}
+\end{itemize}
 
-\section{Experimenten}
-
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
-
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
-
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
-
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
-
-\section{Sectie met figuur}
-
-De {\LaTeX} figure-omgeving bepaalt zelf waar een afbeelding komt en dat is meestal niet op de plek in de tekst waar de figure-omgeving gedefinieerd wordt. Als je wilt forceren dat afbeeldingen toch in de flow van de tekst blijven, dan kan je dat zoals hieronder:
-
+\subsection{Gekozen combinatie}
+Na het evalueren van de verschillende modellen in combinatie met de verschillende datasets verkreeg een XGBoost-classificatiemodel getraind op de geaggregeerde dataset, met een nauwkeurigheid van 44\% de beste score.
+\section{Berekening van de fysieke score}
+\begin{enumerate}
+  \item Na het trainen van de modellen worden SHAP-waarden (SHapley Additive exPlanations) gebruikt om de bijdrage van elke \emph{feature} aan de voorspelling van het model te bepalen.
+  \item Deze bijdragen worden gegroepeerd per positie en omgezet naar procentuele waarden.
+  \item De berekende waarden worden vervolgens gebruikt om een fysieke score te berekenen voor elke speler per wedstrijd, afhankelijk van zijn positie.
+  \item Hierna wordt een gewogen gemiddelde van deze scores genomen over alle wedstrijden van een speler in een competitie en seizoen.
+  \item Tot slot worden deze scores omgezet naar een schaal van 0 tot 100.
+\end{enumerate}
+\section{Dashboard implementatie}
+De berekende fysieke scores worden gevisualiseerd in een toegevoegde pagina binnen het bestaande fysieke scoutingsdashboard van de club.
 \begin{center}
   \captionsetup{type=figure}
-  \includegraphics[width=1.0\linewidth]{grail}
-  \captionof{figure}{He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say `Ni' again to you, if you do not appease us}
+  \includegraphics[width=1.0\linewidth]{dashboard_bovenkant}
+  \captionof{figure}{De machine learning-pagina van het scoutingdashboard}
 \end{center}
-
-Let er wel op dat dit tot problemen met bladschikking kan leiden.
 
 \section{Conclusies}
 
-Don't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
+Dit onderzoek toont aan dat het mogelijk is om een objectieve, reproduceerbare fysieke spelersscore te creëren met machine learning-technieken. Desondanks toont de lage nauwkeurigheid van het model aan dat een wedstrijdresultaat voorspellen alleen op basis van fysieke spelersdata een grote uitdaging blijft.
 
 \section{Toekomstig onderzoek}
 
-I care. So, what do you think of her, Han? No! Alderaan is peaceful. We have no weapons. You can't possibly… I have traced the Rebel spies to her. Now she is my only link to finding their secret base.
-
-Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful Force controlling everything. There's no mystical energy field that controls my destiny. It's all a lot of simple tricks and nonsense. You are a part of the Rebel Alliance and a traitor! Take her away! 
+Tijdens dit onderzoek zijn er mogelijkheden voor alternatief onderzoke naar voren gekomen, de voornaamste hiervan zijn:
+\begin{itemize}
+  \item Kan een clusteringmodel ingezet worden om fysieke \emph{spelerstypes} te identificeren en kunnen \emph{elite} spelers binnen deze types worden gevonden?
+  \item Voortbouwend op het voorgaande, wat is het effect van meerdere van deze \emph{elite} spelers in een wedstrijd op het resultaat?
+\end{itemize}
 
 \end{multicols}
 \end{document}
