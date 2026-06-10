@@ -56,22 +56,28 @@ Alle kwantitatieve fysieke wedstrijddata wordt omgezet naar relatieve waarden pe
   \item \textbf{Geaggregeerde dataset}: Deze dataset bevat geaggregeerde fysieke wedstrijddata van spelers per club en wedstrijd, gegroepeerd per positiegroep.
   \item \textbf{Verschil-dataset}: Deze dataset bevat het verschil van geaggregeerde data van twee teams in een wedstrijd.
 \end{itemize}
-\subsection{Soorten modellen}
-\begin{itemize}
-  \item \textbf{Classificatiemodel}: Dit model voorspelt het resultaat van een wedstrijd gebaseerd op de prestaties van een team of speler.
-  \item \textbf{Regressiemodel}: Dit model voorspelt een getal, zoals het aantal gescoorde doelpunten, tegendoelpunten of het doelpuntenverschil van een wedstrijd.
-\begin{itemize}
-  \item \textbf{Hybride aanpak}: Binnen de regressiemodellen wordt ook een hybride aanpak gehanteerd, waarbij het voorspelde doelpuntenverschil vertaald wordt naar een voorspelling van het wedstrijdresultaat.
-\end{itemize}
-\end{itemize}
+\subsection{Resultaten van modeltraining}
+De classificatie- en hybride modellen worden geëvalueerd met \emph{accuracy}, de regressiemodellen met \emph{RMSE} (Root Mean Square Error).
+\begin{center}
+  \begin{tabular}{lccc}
+  \toprule
+  Dataset & Classificatie & Regressie & Hybride \\
+  \midrule
+  Individueel   & 41\% & \textbf{1,65} & 33\% \\
+  Geaggregeerd  & \textbf{44\%} & \textbf{1,65} & \textbf{44\%} \\
+  Verschil      & 36\% & 1,81 & 39\% \\
+  \bottomrule
+  \end{tabular}
+\end{center}
+
 
 \subsection{Gekozen combinatie}
-Na het evalueren van de verschillende modellen in combinatie met de verschillende datasets verkreeg een XGBoost-classificatiemodel getraind op de geaggregeerde dataset, met een nauwkeurigheid van 44\% de beste score.
+Na het evalueren van de verschillende modellen in combinatie met de verschillende datasets verkreeg een XGBoost-classificatiemodel getraind op de \textbf{geaggregeerde dataset}, met een nauwkeurigheid van \textbf{44\%} de beste score.
 \section{Berekening van de fysieke score}
 \begin{enumerate}
   \item Na het trainen van de modellen worden SHAP-waarden (SHapley Additive exPlanations) gebruikt om de bijdrage van elke \emph{feature} aan de voorspelling van het model te bepalen.
-  \item Deze bijdragen worden gegroepeerd per positie en omgezet naar procentuele waarden.
-  \item De berekende waarden worden vervolgens gebruikt om een fysieke score te berekenen voor elke speler per wedstrijd, afhankelijk van zijn positie.
+  \item Deze bijdragen worden gegroepeerd per positie en omgezet naar genormaliseerde gewichten.
+  \item De berekende gewichten worden vervolgens gebruikt om een fysieke score te berekenen voor elke speler per wedstrijd, afhankelijk van zijn positie.
   \item Hierna wordt een gewogen gemiddelde van deze scores genomen over alle wedstrijden van een speler in een competitie en seizoen.
   \item Tot slot worden deze scores omgezet naar een schaal van 0 tot 100.
 \end{enumerate}
@@ -80,16 +86,15 @@ De berekende fysieke scores worden gevisualiseerd in een toegevoegde pagina binn
 \begin{center}
   \captionsetup{type=figure}
   \includegraphics[width=1.0\linewidth]{dashboard_bovenkant}
-  \captionof{figure}{De machine learning-pagina van het scoutingdashboard}
+  \captionof{figure}{De machine learning-pagina van het scoutingdashboard met verschillende filters en een overzicht van spelers en hun fysieke score.}
 \end{center}
 
 \section{Conclusies}
 
-Dit onderzoek toont aan dat het mogelijk is om een objectieve, reproduceerbare fysieke spelersscore te creëren met machine learning-technieken. Desondanks toont de lage nauwkeurigheid van het model aan dat een wedstrijdresultaat voorspellen alleen op basis van fysieke spelersdata een grote uitdaging blijft.
+Dit onderzoek toont aan dat het mogelijk is om een objectieve, reproduceerbare fysieke spelersscore te creëren met machine learning-technieken. Desondanks toont de lage nauwkeurigheid van het model aan dat een wedstrijdresultaat voorspellen alleen op basis van fysieke spelersdata een grote uitdaging blijft. De score werd geïmplementeerd in het scoutingsdashboard van KAA Gent als een objectief aanvullend instrument voor de scoutingstaf.
 
 \section{Toekomstig onderzoek}
 
-Tijdens dit onderzoek zijn er mogelijkheden voor alternatief onderzoke naar voren gekomen, de voornaamste hiervan zijn:
 \begin{itemize}
   \item Kan een clusteringmodel ingezet worden om fysieke \emph{spelerstypes} te identificeren en kunnen \emph{elite} spelers binnen deze types worden gevonden?
   \item Voortbouwend op het voorgaande, wat is het effect van meerdere van deze \emph{elite} spelers in een wedstrijd op het resultaat?
